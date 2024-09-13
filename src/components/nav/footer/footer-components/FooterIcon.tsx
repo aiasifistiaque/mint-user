@@ -6,7 +6,7 @@ import { IoLogoTwitter } from 'react-icons/io5';
 import { IoLogoLinkedin } from 'react-icons/io5';
 import { IoLogoYoutube } from 'react-icons/io5';
 
-const icons: any = {
+const icons: { [key: string]: React.ElementType } = {
 	instagram: IoLogoInstagram,
 	facebook: IoLogoFacebook,
 	twitter: IoLogoTwitter,

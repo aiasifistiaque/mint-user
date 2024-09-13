@@ -6,11 +6,17 @@ type HeroProps = {
 	src: string;
 	title: string;
 	subTitle: string;
-	href: string;
+	href?: string;
 	btnText: string;
 };
 
-const Hero: FC<HeroProps> = ({ src, title, subTitle, href, btnText }) => {
+const Hero: FC<HeroProps> = ({
+	src,
+	title,
+	subTitle,
+	//	href,
+	btnText,
+}) => {
 	return (
 		<Container src={src}>
 			<Overlay>

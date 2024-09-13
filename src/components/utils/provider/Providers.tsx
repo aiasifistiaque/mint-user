@@ -3,7 +3,7 @@
 // import { store } from '@/store';
 import { theme } from '@/theme';
 import { ChakraProvider } from '@chakra-ui/react';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 import { ColorModeScript } from '@chakra-ui/react';
 
 export default function Providers({ children }: { children: React.ReactNode }) {

@@ -1,5 +1,4 @@
-import { Align, FlexChild, padding } from '../../..';
-import { Flex } from '@chakra-ui/react';
+import { Align, FlexChild } from '../../..';
 import React, { FC } from 'react';
 
 const HeaderSection: FC<FlexChild> = ({ children, ...props }) => {

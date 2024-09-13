@@ -1,5 +1,5 @@
 'use client';
-import { cssVar, defineStyle, defineStyleConfig, extendTheme, ThemeConfig } from '@chakra-ui/react';
+import { defineStyle, defineStyleConfig, extendTheme, ThemeConfig } from '@chakra-ui/react';
 import colors from './colors.theme';
 
 // 2. Add color mode config

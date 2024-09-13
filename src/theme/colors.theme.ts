@@ -2,71 +2,71 @@
 
 const THEME = 'basic';
 
-type ColorMode = {
-	light?: string;
-	dark?: string;
-	50?: string;
-	100?: string;
-	200?: string;
-	300?: string;
-	400?: string;
-	500?: string;
-	600?: string;
-	700?: string;
-	800?: string;
-	900?: string;
-	selected?: string;
-	selectedDark?: string;
-	darker?: string;
-};
+// type ColorMode = {
+// 	light?: string;
+// 	dark?: string;
+// 	50?: string;
+// 	100?: string;
+// 	200?: string;
+// 	300?: string;
+// 	400?: string;
+// 	500?: string;
+// 	600?: string;
+// 	700?: string;
+// 	800?: string;
+// 	900?: string;
+// 	selected?: string;
+// 	selectedDark?: string;
+// 	darker?: string;
+// };
 
-type Colors = {
-	background: ColorMode;
-	text: ColorMode & {
-		500: string;
-	};
-	stroke: ColorMode & { deepL: string; deepD: string };
-	header: ColorMode;
-	sidebar: ColorMode;
-	border: ColorMode;
-	container: ColorMode;
-	table: ColorMode;
-	navbar: ColorMode;
-	brand: ColorMode;
-	black?: ColorMode;
-	white?: ColorMode;
-	blackAlpha?: ColorMode;
-	menu: ColorMode;
-	hover: ColorMode;
-	selectBorder: ColorMode;
-	gray?: ColorMode;
-	card: ColorMode;
-	pos: ColorMode;
-};
+// type Colors = {
+// 	background: ColorMode;
+// 	text: ColorMode & {
+// 		500: string;
+// 	};
+// 	stroke: ColorMode & { deepL: string; deepD: string };
+// 	header: ColorMode;
+// 	sidebar: ColorMode;
+// 	border: ColorMode;
+// 	container: ColorMode;
+// 	table: ColorMode;
+// 	navbar: ColorMode;
+// 	brand: ColorMode;
+// 	black?: ColorMode;
+// 	white?: ColorMode;
+// 	blackAlpha?: ColorMode;
+// 	menu: ColorMode;
+// 	hover: ColorMode;
+// 	selectBorder: ColorMode;
+// 	gray?: ColorMode;
+// 	card: ColorMode;
+// 	pos: ColorMode;
+// };
 
-const RICH_BLACK = '#0E131F';
+// const RICH_BLACK = '#0E131F';
 const DARK = '#0E0E0E';
 
 // const SAGE = '#B5BD89';
 const SAGE = 'whitesmoke';
-const THIRSTLE = '#D0C4DF';
+// const THIRSTLE = '#D0C4DF';
 
 //const BLACK = '#1f1f1f';
 const BLACK = '#171717';
 
-const test = {
-	100: 'red',
-	200: 'blue',
-	300: 'teal',
-	400: 'slateblue',
-	500: 'darkslateblue',
-	600: 'green',
-	700: 'yellow',
-	800: 'orange',
-	900: 'tomato',
-};
+// const test = {
+// 	100: 'red',
+// 	200: 'blue',
+// 	300: 'teal',
+// 	400: 'slateblue',
+// 	500: 'darkslateblue',
+// 	600: 'green',
+// 	700: 'yellow',
+// 	800: 'orange',
+// 	900: 'tomato',
+// };
 
-export const colors: any = {
+export const colors = {
 	brand: {
 		// 100: 'red',
 		light: '#635BFF',

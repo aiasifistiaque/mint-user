@@ -5,7 +5,7 @@ import { IoAdd } from 'react-icons/io5';
 import { TbSelector } from 'react-icons/tb';
 import { BsCalendar2Date } from 'react-icons/bs';
 import colors from '@/theme/colors.theme';
-import { grid, useColorModeValue } from '@chakra-ui/react';
+import { useColorModeValue } from '@chakra-ui/react';
 import { TbArrowForward } from 'react-icons/tb';
 import { TbSettings } from 'react-icons/tb';
 import { LuImagePlus } from 'react-icons/lu';
@@ -26,7 +26,7 @@ import { IoMdBarcode } from 'react-icons/io';
 import { CiMenuBurger } from 'react-icons/ci';
 import { GrSubtract } from 'react-icons/gr';
 import { SiCkeditor4 } from 'react-icons/si';
-import { FaRegEdit } from 'react-icons/fa';
+// import { FaRegEdit } from 'react-icons/fa';
 import { MdFastfood } from 'react-icons/md';
 import { BsCollectionFill } from 'react-icons/bs';
 import { FcFeedback } from 'react-icons/fc';
@@ -42,7 +42,7 @@ import { IoBagOutline } from 'react-icons/io5';
 import { IoReorderTwoOutline } from 'react-icons/io5';
 import { IoGridOutline } from 'react-icons/io5';
 import { IoSearchOutline } from 'react-icons/io5';
-import { FaCartShopping } from 'react-icons/fa6';
+// import { FaCartShopping } from 'react-icons/fa6';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 
@@ -96,7 +96,7 @@ type IconProps = {
 	name: IconNameOptions;
 };
 
-const icons: any = {
+const icons: { [key in IconNameOptions]: FC<{ size: number; color: string }> } = {
 	arrow: TbArrowForward,
 	add: IoAdd,
 	subtract: GrSubtract,
@@ -147,7 +147,7 @@ const Icon: FC<IconProps> = ({ name, ...props }) => {
 	const defaultColor = useColorModeValue('#4a4a4a', 'white');
 	return (
 		<IconComponent
-			size={props.size}
+			size={props.size || 22}
 			color={name == 'arrow' ? brandColor : props.color ? props.color : defaultColor}
 			{...props}
 		/>

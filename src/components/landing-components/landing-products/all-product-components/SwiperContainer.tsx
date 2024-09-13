@@ -29,11 +29,7 @@ const common_breakpoints = {
 	},
 };
 
-const SwiperContainer: FC<FlexChild & { breakpoints?: any }> = ({
-	children,
-	breakpoints,
-	...props
-}) => {
+const SwiperContainer: FC<FlexChild> = ({ children, ...props }) => {
 	return (
 		<Flex
 			w='full'
@@ -44,7 +40,7 @@ const SwiperContainer: FC<FlexChild & { breakpoints?: any }> = ({
 			scrollbar={{ draggable: true }}
 			modules={[Pagination]}
 			spaceBetween={20}
-			breakpoints={breakpoints || common_breakpoints}
+			breakpoints={common_breakpoints}
 			{...props}>
 			{children}
 		</Flex>

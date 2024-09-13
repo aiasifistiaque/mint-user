@@ -3,10 +3,13 @@ import { ColRow, FlexChild, SubHeading, Title, PrimaryButton, Column } from '../
 import React, { FC } from 'react';
 import { CategoryCard, CategoryCardContainer } from '.';
 
-const SRC =
-	'https://nexa-clothing.myshopify.com/cdn/shop/files/main-banner-four.png?v=1722417191&width=3840';
+type CardItemProps = {
+	src: string;
+	name: string;
+	qty: number;
+};
 
-const cardData = [
+const cardData: CardItemProps[] = [
 	{
 		name: 'Long Sleeves',
 		qty: 10,
@@ -69,7 +72,7 @@ const TopContainer: FC<FlexChild> = ({ children }) => (
 );
 
 const AllCategories = () => {
-	const renderCategoryCards = cardData.map((item: any, i: number) => (
+	const renderCategoryCards = cardData.map((item: CardItemProps, i: number) => (
 		<CategoryCard
 			src={item.src}
 			name={item.name}

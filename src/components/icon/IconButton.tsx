@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { IconButton as IButton, IconButtonProps, Tooltip } from '@chakra-ui/react';
-import { Icon } from '..';
+import { Icon, IconNameOptions } from '..';
 
 const IconButton = ({
-	color,
+	// color,
 	iconName,
 	iconSize,
 	tooltip,
 	...props
-}: IconButtonProps & { iconName: any; color?: string; iconSize?: number; tooltip?: string }) => {
-	const Container = ({ children }: any) => {
+}: IconButtonProps & {
+	iconName: IconNameOptions;
+	color?: string | undefined;
+	iconSize?: number;
+	tooltip?: string;
+}) => {
+	const Container = ({ children }: { children: ReactNode }) => {
 		if (tooltip)
 			return (
 				<Tooltip
@@ -26,7 +31,7 @@ const IconButton = ({
 				icon={
 					<Icon
 						name={iconName}
-						color={color || 'inherit'}
+						// color={color || 'inherit'}
 						size={iconSize}
 					/>
 				}

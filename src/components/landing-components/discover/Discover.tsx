@@ -1,6 +1,6 @@
-import { BgImage, ColRow, Column, SubHeading, Title, Button, sizes } from '../..';
+import { BgImage, Column, SubHeading, Title, Button, sizes } from '../..';
 import React, { FC } from 'react';
-import { Grid, Box } from '@chakra-ui/react';
+import { Grid } from '@chakra-ui/react';
 
 const DiscoverItem = ({ src, btn, href }: { src: string; btn: string; href: string }) => {
 	return (
@@ -23,17 +23,26 @@ const DiscoverItem = ({ src, btn, href }: { src: string; btn: string; href: stri
 	);
 };
 
-const Discover: FC<{ title: string; subTitle: string; items: any[] }> = ({
-	title,
-	subTitle,
-	items,
-}) => {
-	const renderItems = items.map((item, i: number) => (
-		<DiscoverItem
-			{...item}
-			key={i}
-		/>
-	));
+const Discover: FC<{
+	title: string;
+	subTitle: string;
+	items: { btn: string; href: string; src: string }[];
+}> = ({ title, subTitle, items }) => {
+	const renderItems = items.map(
+		(
+			item: {
+				src: string;
+				btn: string;
+				href: string;
+			},
+			i: number
+		) => (
+			<DiscoverItem
+				{...item}
+				key={i}
+			/>
+		)
+	);
 	return (
 		<Column gap={16}>
 			<Column

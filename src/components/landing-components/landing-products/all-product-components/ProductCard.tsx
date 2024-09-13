@@ -3,7 +3,7 @@
 import React, { FC, ReactNode } from 'react';
 import { Column, SubHeading, Title, sizes, Text, BgImage, Button, ButtonChild } from '../../..';
 
-const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
+// const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
 
 type ProductCardProps = {
 	name: string;

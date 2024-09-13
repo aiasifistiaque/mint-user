@@ -30,7 +30,13 @@ const swiperBreakpoints = {
 	},
 };
 
-const CardContainer: FC<FlexChild & { data: any }> = ({ children, data, ...props }) => {
+type ItemProps = {
+	src: string;
+	name: string;
+	qty: number;
+};
+
+const CardContainer: FC<FlexChild & { data: ItemProps[] }> = ({ data }) => {
 	return (
 		<Flex
 			py={8}
@@ -43,7 +49,7 @@ const CardContainer: FC<FlexChild & { data: any }> = ({ children, data, ...props
 			modules={[Pagination]}
 			spaceBetween={20}
 			breakpoints={swiperBreakpoints}>
-			{data.map((item: any, i: number) => (
+			{data.map((item: ItemProps, i: number) => (
 				<SwiperSlide key={i}>
 					<CategoriesCard
 						src={item?.src}

@@ -1,11 +1,13 @@
 import React from 'react';
-import { ButtonProps } from '@chakra-ui/react';
-import { IconButton } from '../../..';
+import { IconButton, IconNameOptions } from '../../..';
+// import { IconButtonProps } from '@chakra-ui/react';
 
 const size = { base: '44px', md: '64px' };
 
-const ArrowButton = ({ name, ...props }: any) => (
+const ArrowButton = ({ name, onClick }: { name: IconNameOptions; onClick: () => void }) => (
 	<IconButton
+		onClick={onClick}
+		aria-label='Arrow Button'
 		w={size}
 		h={size}
 		borderRadius='full'
@@ -20,8 +22,6 @@ const ArrowButton = ({ name, ...props }: any) => (
 		}}
 		iconSize={32}
 		iconName={name}
-		aria-label={name}
-		{...props}
 	/>
 );
 

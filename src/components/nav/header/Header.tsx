@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { HeaderContainer, Logo, HeaderSection, HeaderText, HeaderIcon } from '.';
+import { HeaderContainer, Logo, HeaderSection, HeaderText, HeaderIcon } from './';
+import { IconNameOptions } from '../../';
 
-const headerItems = [
+type ItemProps = { name: string; href: string };
+const headerItems: ItemProps[] = [
 	{
 		name: 'Home',
 		href: '/',
@@ -17,7 +19,10 @@ const headerItems = [
 	},
 ];
 
-const headerIcons: any[] = [
+const headerIcons: {
+	name: IconNameOptions;
+	href: string;
+}[] = [
 	{
 		name: 'search',
 		href: '#',
@@ -56,8 +61,9 @@ const Header = () => {
 				justify='flex-end'>
 				{headerIcons.map((item, i) => (
 					<HeaderIcon
+						name={item.name}
 						key={i}
-						{...item}
+						href={item.href}
 					/>
 				))}
 			</HeaderSection>

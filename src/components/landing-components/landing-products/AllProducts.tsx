@@ -1,8 +1,8 @@
 'use client';
-import { ColRow, FlexChild, SubHeading, Title, Column, swiper, Button, useIsMobile } from '../..';
+import { ColRow, FlexChild, SubHeading, Title, Column, swiper, Button } from '../../';
 import React, { FC } from 'react';
-import { ProductCard, ArrowButton } from '.';
-import { Flex, Center } from '@chakra-ui/react';
+import { ProductCard, ArrowButton } from './';
+import { Flex } from '@chakra-ui/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -14,8 +14,6 @@ import { productData } from '../../demo-data';
 const AllProducts = () => {
 	const [swiperRef, setSwiperRef] = React.useState<any>(null);
 
-	const isMobile = useIsMobile();
-
 	const renderCategoryCards = productData.map((item: any, i: number) => (
 		<SwiperSlide
 			key={i}
@@ -23,20 +21,6 @@ const AllProducts = () => {
 			<ProductCard {...item} />
 		</SwiperSlide>
 	));
-
-	const arrowButtons = (
-		<Flex gap={3}>
-			<ArrowButton
-				name='arrow-left'
-				onClick={() => swiperRef?.slidePrev()}
-			/>
-
-			<ArrowButton
-				name='arrow-right'
-				onClick={() => swiperRef?.slideNext()}
-			/>
-		</Flex>
-	);
 
 	return (
 		<Column py={8}>
@@ -50,7 +34,17 @@ const AllProducts = () => {
 						items.
 					</SubHeading>
 				</Column>
-				<Flex display={{ base: 'none', md: 'flex' }}> {arrowButtons}</Flex>
+				<Flex gap={3}>
+					<ArrowButton
+						name='arrow-left'
+						onClick={() => swiperRef?.slidePrev()}
+					/>
+
+					<ArrowButton
+						name='arrow-right'
+						onClick={() => swiperRef?.slideNext()}
+					/>
+				</Flex>
 			</TopContainer>
 			<Flex
 				onSwiper={setSwiperRef}
@@ -64,13 +58,6 @@ const AllProducts = () => {
 				breakpoints={swiper.BREAKPOINTS.PRODUCT}>
 				{renderCategoryCards}
 			</Flex>
-			<Center
-				pb={8}
-				w='full'
-				display={{ base: 'flex', md: 'none' }}>
-				{arrowButtons}
-			</Center>
-
 			<Button variant='secondary'>View More</Button>
 		</Column>
 	);
