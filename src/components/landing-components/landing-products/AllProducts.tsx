@@ -3,7 +3,7 @@ import { ColRow, FlexChild, SubHeading, Title, Column, swiper, Button } from '..
 import React, { FC } from 'react';
 import { ProductCard, ArrowButton } from './';
 import { Flex } from '@chakra-ui/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, SwiperProps } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,10 +11,19 @@ import 'swiper/css/pagination';
 
 import { productData } from '../../demo-data';
 
+type ProductCardProps = {
+	name: string;
+	price: number | string;
+	src: string;
+	category: {
+		name: string;
+	};
+};
+
 const AllProducts = () => {
 	const [swiperRef, setSwiperRef] = React.useState<any>(null);
 
-	const renderCategoryCards = productData.map((item: any, i: number) => (
+	const renderCategoryCards = productData.map((item: ProductCardProps, i: number) => (
 		<SwiperSlide
 			key={i}
 			virtualIndex={i}>
