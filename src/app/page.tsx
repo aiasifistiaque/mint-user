@@ -1,95 +1,74 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import {
+	Hero,
+	LandingSection,
+	Layout,
+	AllCategories,
+	Discover,
+	AllProducts,
+	Column,
+	About,
+} from '@/components';
+import React from 'react';
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+const SRC =
+	'https://nexa-clothing.myshopify.com/cdn/shop/files/main-banner-four.png?v=1722417191&width=3840';
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+const hero = {
+	src: SRC,
+	title: 'Welcome to Nexa Clothing',
+	subTitle:
+		'Discover our Premium fitness and yoga gears designed for ultimate performance and comfort',
+	btnText: 'Shop Now',
+	href: '#',
+};
+
+const discoverData = {
+	title: 'Discover The True Essence Of Style With Our Exclusive Premium Fashion Collection',
+	subTitle: 'Discover your unique style today',
+	items: [
+		{
+			btn: 'Explore',
+			href: '#',
+			src: 'https://images.pexels.com/photos/28271086/pexels-photo-28271086/free-photo-of-adidas-shoes-buty-sklep-z-butami-retail-store-shoes.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+		},
+		{
+			btn: 'About Us',
+			href: '#',
+			src: 'https://images.pexels.com/photos/2294403/pexels-photo-2294403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+		},
+	],
+};
+
+const page = () => {
+	return (
+		<Layout>
+			<Column gap={16}>
+				<LandingSection>
+					<Hero {...hero} />
+				</LandingSection>
+				<Column px={{ base: 0, md: 4 }}>
+					<LandingSection>
+						<AllCategories />
+					</LandingSection>
+					<LandingSection>
+						<Discover {...discoverData} />
+					</LandingSection>
+					<LandingSection>
+						<AllProducts />
+					</LandingSection>
+					<LandingSection>
+						<AllProducts />
+					</LandingSection>
+					<LandingSection>
+						<AllProducts />
+					</LandingSection>
+					<LandingSection>
+						<About />
+					</LandingSection>
+				</Column>
+			</Column>
+		</Layout>
+	);
+};
+
+export default page;
