@@ -5,7 +5,7 @@ export const userApi = mainApi.injectEndpoints({
 	overrideExisting: true,
 	endpoints: builder => ({
 		getCount: builder.query({
-			query: ({ path, filters = {} }: { path: string; filters?: {} }) => ({
+			query: ({ path, filters = {} }: { path: string; filters: object }) => ({
 				url: `${path}/get/count`,
 				params: { ...filters },
 			}),
@@ -29,12 +29,12 @@ export const userApi = mainApi.injectEndpoints({
 		}),
 
 		getById: builder.query({
-			query: ({ path, id, invalidate = [] }): any => `${path}/${id}?invalidate=${invalidate}`,
+			query: ({ path, id, invalidate = [] }) => `${path}/${id}?invalidate=${invalidate}`,
 			providesTags: (_result, _error, { path, invalidate = [] }) => [path, ...invalidate],
 		}),
 
 		post: builder.mutation({
-			query: ({ path, body }): any => ({
+			query: ({ path, body }) => ({
 				url: path,
 				method: 'POST',
 				body: body,

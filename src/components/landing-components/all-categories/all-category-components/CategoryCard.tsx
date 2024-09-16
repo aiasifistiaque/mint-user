@@ -9,7 +9,7 @@ const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
 
 const CategoryCard: FC<{ id: string; type: string }> = ({ id, type }) => {
 	const { name, image } = useGetItemNameById({ id, path: type });
-	const { data, isFetching } = useGetAllQuery({
+	const { data } = useGetAllQuery({
 		path: 'products',
 		filters: {
 			...(type === 'categories' && { category_in: id }),

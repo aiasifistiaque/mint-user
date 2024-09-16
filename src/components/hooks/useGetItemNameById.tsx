@@ -1,4 +1,3 @@
-import React from 'react';
 import { useGetByIdQuery } from '../../store/services/commonApi';
 
 const useGetItemNameById = ({ path, id }: { path: string; id: string }) => {

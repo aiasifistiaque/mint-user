@@ -31,7 +31,7 @@ export const authSlice = createSlice({
 			void (document.location.href = '/auth/login');
 		},
 		login: (state, action: PayloadAction<LoginPayloadType>): void => {
-			const { token, refreshToken }: LoginPayloadType = action.payload;
+			const { token }: LoginPayloadType = action.payload;
 			state.token = token;
 			state.loggedIn = true;
 			localStorage.setItem(TOKEN_NAME, token);

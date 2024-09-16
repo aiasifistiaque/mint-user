@@ -12,7 +12,7 @@ import {
 	sortByPriority,
 } from '@/components';
 import { useGetStoreQuery } from '@/store/services/storeApi';
-import { Center, Text, Spinner } from '@chakra-ui/react';
+import { Center, Spinner } from '@chakra-ui/react';
 import React from 'react';
 
 // const hero = {
@@ -42,10 +42,17 @@ import React from 'react';
 // 	],
 // };
 
-const ProductList = ({ data }: { data: any[] }) => {
+type ProductProp = {
+	title: string;
+	subTitle: string;
+	type: string;
+	id: string;
+};
+
+const ProductList = ({ data }: { data: ProductProp[] }) => {
 	const list = sortByPriority(data);
 
-	return list?.map((item: any, i: number) => (
+	return list?.map((item: ProductProp, i: number) => (
 		<LandingSection key={i}>
 			<AllProducts
 				title={item?.title}
@@ -57,7 +64,7 @@ const ProductList = ({ data }: { data: any[] }) => {
 	));
 };
 
-const page = () => {
+const HomePage = () => {
 	const { data, isLoading } = useGetStoreQuery({});
 
 	if (isLoading)
@@ -98,4 +105,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default HomePage;

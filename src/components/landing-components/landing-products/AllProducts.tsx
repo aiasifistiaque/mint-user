@@ -10,7 +10,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { productData } from '../../demo-data';
+// import { productData } from '../../demo-data';
 import { useGetAllQuery } from '@/store/services/commonApi';
 
 type ProductCardProps = {

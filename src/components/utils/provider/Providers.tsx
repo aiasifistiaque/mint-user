@@ -14,7 +14,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 				<ColorModeScript initialColorMode={theme.config.initialColorMode} />
 				{children}
 			</ChakraProvider>
-			//{' '}
 		</Provider>
 		// </CacheProvider>
 	);

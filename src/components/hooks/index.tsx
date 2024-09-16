@@ -10,8 +10,12 @@ export { default as useGetItemNameById } from './useGetItemNameById';
 // Example: sortByPriority([{ priority: 1 }, { priority: 2 }, { priority: 0 }]) =>
 //          [{ priority: 2 }, { priority: 1 }, { priority: 0 }]
 
-export const sortByPriority = (doc: any[]) => {
-	return doc.slice().sort((a: any, b: any) => {
+interface MyType {
+	priority: number;
+}
+
+export const sortByPriority = (doc: []) => {
+	return doc.slice().sort((a: MyType, b: MyType) => {
 		if (a.priority === undefined) return 1;
 		if (b.priority === undefined) return -1;
 		return b.priority - a.priority;
