@@ -50,7 +50,7 @@ type ProductProp = {
 };
 
 const ProductList = ({ data }: { data: ProductProp[] }) => {
-	const list = sortByPriority(data);
+	const list = sortByPriority(data as []);
 
 	return list?.map((item: ProductProp, i: number) => (
 		<LandingSection key={i}>
