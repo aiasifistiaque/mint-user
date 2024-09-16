@@ -4,12 +4,11 @@ import React, { FC } from 'react';
 import { CategoryCard, CategoryCardContainer } from '.';
 
 type CardItemProps = {
-	src: string;
-	name: string;
-	qty: number;
+	id: string;
+	type: string;
 };
 
-const cardData: CardItemProps[] = [
+const cardData: any[] = [
 	{
 		name: 'Long Sleeves',
 		qty: 10,
@@ -71,12 +70,18 @@ const TopContainer: FC<FlexChild> = ({ children }) => (
 	</ColRow>
 );
 
-const AllCategories = () => {
-	const renderCategoryCards = cardData.map((item: CardItemProps, i: number) => (
+type AllCategoriesProps = {
+	title: string;
+	subTitle: string;
+	btnText: string;
+	items: any[];
+};
+
+const AllCategories: FC<AllCategoriesProps> = ({ title, subTitle, btnText, items }) => {
+	const renderCategoryCards = items.map((item: CardItemProps, i: number) => (
 		<CategoryCard
-			src={item.src}
-			name={item.name}
-			qty={item.qty}
+			id={item?.id}
+			type={item?.type}
 			key={i}
 		/>
 	));
@@ -87,12 +92,12 @@ const AllCategories = () => {
 					w='full'
 					gap={4}
 					textAlign={{ base: 'center', md: 'left' }}>
-					<Title type='h4'>Discover Every Style</Title>
-					<SubHeading>Unveil your distinct style today.</SubHeading>
+					<Title type='h4'>{title}</Title>
+					<SubHeading>{subTitle}</SubHeading>
 				</Column>
-				<PrimaryButton px={4}>View All Collections</PrimaryButton>
+				<PrimaryButton px={4}>{btnText}</PrimaryButton>
 			</TopContainer>
-			<CategoryCardContainer data={cardData}>{renderCategoryCards}</CategoryCardContainer>
+			<CategoryCardContainer data={items}>{renderCategoryCards}</CategoryCardContainer>
 		</Column>
 	);
 };

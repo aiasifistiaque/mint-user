@@ -31,9 +31,8 @@ const swiperBreakpoints = {
 };
 
 type ItemProps = {
-	src: string;
-	name: string;
-	qty: number;
+	id: string;
+	type: string;
 };
 
 const CardContainer: FC<FlexChild & { data: ItemProps[] }> = ({ data }) => {
@@ -52,9 +51,8 @@ const CardContainer: FC<FlexChild & { data: ItemProps[] }> = ({ data }) => {
 			{data.map((item: ItemProps, i: number) => (
 				<SwiperSlide key={i}>
 					<CategoriesCard
-						src={item?.src}
-						name={item?.name}
-						qty={item?.qty}
+						id={item.id}
+						type={item.type}
 					/>
 				</SwiperSlide>
 			))}

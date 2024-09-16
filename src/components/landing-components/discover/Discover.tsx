@@ -2,10 +2,16 @@ import { BgImage, Column, SubHeading, Title, Button, sizes } from '../..';
 import React, { FC } from 'react';
 import { Grid } from '@chakra-ui/react';
 
-const DiscoverItem = ({ src, btn, href }: { src: string; btn: string; href: string }) => {
+type ItemProps = {
+	image: string;
+	btnText: string;
+	href: string;
+};
+
+const DiscoverItem: FC<ItemProps> = ({ image, btnText, href }) => {
 	return (
 		<BgImage
-			src={src}
+			src={image}
 			h='400px'
 			p='32px'
 			align='flex-end'
@@ -16,7 +22,7 @@ const DiscoverItem = ({ src, btn, href }: { src: string; btn: string; href: stri
 					w='150px'
 					href={href}
 					variant='secondary'>
-					{btn}
+					{btnText}
 				</Button>
 			</>
 		</BgImage>
@@ -26,23 +32,14 @@ const DiscoverItem = ({ src, btn, href }: { src: string; btn: string; href: stri
 const Discover: FC<{
 	title: string;
 	subTitle: string;
-	items: { btn: string; href: string; src: string }[];
+	items: { btnText: string; href: string; image: string }[];
 }> = ({ title, subTitle, items }) => {
-	const renderItems = items.map(
-		(
-			item: {
-				src: string;
-				btn: string;
-				href: string;
-			},
-			i: number
-		) => (
-			<DiscoverItem
-				{...item}
-				key={i}
-			/>
-		)
-	);
+	const renderItems = items.map((item: ItemProps, i: number) => (
+		<DiscoverItem
+			{...item}
+			key={i}
+		/>
+	));
 	return (
 		<Column gap={16}>
 			<Column

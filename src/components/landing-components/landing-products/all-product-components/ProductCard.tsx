@@ -1,23 +1,33 @@
 'use client';
 
 import React, { FC, ReactNode } from 'react';
-import { Column, SubHeading, Title, sizes, Text, BgImage, Button, ButtonChild } from '../../..';
+import {
+	Column,
+	SubHeading,
+	Title,
+	sizes,
+	Text,
+	BgImage,
+	Button,
+	ButtonChild,
+	PLACEHOLDER_IMAGE,
+} from '../../..';
 
 // const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
 
 type ProductCardProps = {
 	name: string;
 	price: number | string;
-	src: string;
+	image: string;
 	category: {
 		name: string;
 	};
 };
 
-const ProductCard: FC<ProductCardProps> = ({ name, price, src, category }) => {
+const ProductCard: FC<ProductCardProps> = ({ name, price, image, category }) => {
 	return (
 		<Container>
-			<CardImage src={src}>
+			<CardImage src={image || PLACEHOLDER_IMAGE}>
 				<AddToCartButton>Add to Cart</AddToCartButton>
 			</CardImage>
 			<Column>

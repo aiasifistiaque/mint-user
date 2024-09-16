@@ -11,26 +11,46 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import { productData } from '../../demo-data';
+import { useGetAllQuery } from '@/store/services/commonApi';
 
 type ProductCardProps = {
 	name: string;
 	price: number | string;
-	src: string;
+	image: string;
 	category: {
 		name: string;
 	};
 };
 
-const AllProducts = () => {
+type AllProductCardProps = {
+	title: string;
+	subTitle: string;
+	type: string;
+	id: string;
+};
+
+const AllProducts: FC<AllProductCardProps> = ({ title, subTitle, type, id }) => {
 	const [swiperRef, setSwiperRef] = React.useState<SwiperType | null>(null);
 
-	const renderCategoryCards = productData.map((item: ProductCardProps, i: number) => (
-		<SwiperSlide
-			key={i}
-			virtualIndex={i}>
-			<ProductCard {...item} />
-		</SwiperSlide>
-	));
+	const { data, isFetching } = useGetAllQuery({
+		path: 'products',
+		filters: {
+			...(type == 'category' && { category_in: id }),
+			...(type == 'collection' && { collection_in: id }),
+			limit: 10,
+			sort: 'priority',
+		},
+	});
+
+	const renderCategoryCards =
+		!isFetching &&
+		data?.doc?.map((item: ProductCardProps, i: number) => (
+			<SwiperSlide
+				key={i}
+				virtualIndex={i}>
+				<ProductCard {...item} />
+			</SwiperSlide>
+		));
 
 	return (
 		<Column py={8}>
@@ -38,11 +58,8 @@ const AllProducts = () => {
 				<Column
 					gap={4}
 					textAlign={{ base: 'center', md: 'left' }}>
-					<Title type='h4'>Spotlight Collection</Title>
-					<SubHeading>
-						Showcase standout pieces with stunning imagery, ideal for highlighting new or featured
-						items.
-					</SubHeading>
+					<Title type='h4'>{title}</Title>
+					<SubHeading>{subTitle}</SubHeading>
 				</Column>
 				<Flex gap={3}>
 					<ArrowButton

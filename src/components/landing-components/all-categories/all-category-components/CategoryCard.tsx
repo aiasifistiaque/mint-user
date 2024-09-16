@@ -1,12 +1,21 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Column, SubHeading, Title, sizes } from '../../..';
+import { Column, SubHeading, Title, sizes, useGetItemNameById, PLACEHOLDER_IMAGE } from '../../..';
 import { Image } from '@chakra-ui/react';
+import { useGetAllQuery } from '@/store/services/commonApi';
 
 const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
 
-const CategoryCard: FC<{ name: string; qty: number; src: string }> = ({ name, qty, src }) => {
+const CategoryCard: FC<{ id: string; type: string }> = ({ id, type }) => {
+	const { name, image } = useGetItemNameById({ id, path: type });
+	const { data, isFetching } = useGetAllQuery({
+		path: 'products',
+		filters: {
+			...(type === 'categories' && { category_in: id }),
+			...(type === 'collections' && { collection_in: id }),
+		},
+	});
 	return (
 		<Column
 			pb={8}
@@ -15,7 +24,7 @@ const CategoryCard: FC<{ name: string; qty: number; src: string }> = ({ name, qt
 			w='full'
 			gap={4}>
 			<Image
-				src={src}
+				src={image || PLACEHOLDER_IMAGE}
 				alt='name'
 				objectFit='cover'
 				width={IMAGE_SIZE}
@@ -24,7 +33,7 @@ const CategoryCard: FC<{ name: string; qty: number; src: string }> = ({ name, qt
 			/>
 			<Column>
 				<Title type='h6'>{name}</Title>
-				<SubHeading fontSize='1.1rem'>{qty} products</SubHeading>
+				<SubHeading fontSize='1.1rem'>{data?.totalDocs || '--'} products</SubHeading>
 			</Column>
 		</Column>
 	);

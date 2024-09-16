@@ -3,7 +3,7 @@ import { Flex, Box } from '@chakra-ui/react';
 import { BgImage, Column, FlexChild, PrimaryButton, SubHeading, Title } from '../..';
 
 type HeroProps = {
-	src: string;
+	image: string;
 	title: string;
 	subTitle: string;
 	href?: string;
@@ -11,14 +11,14 @@ type HeroProps = {
 };
 
 const Hero: FC<HeroProps> = ({
-	src,
+	image,
 	title,
 	subTitle,
 	//	href,
 	btnText,
 }) => {
 	return (
-		<Container src={src}>
+		<Container src={image}>
 			<Overlay>
 				<ContentBox>
 					<Title lineHeight={1.2}>{title}</Title>
