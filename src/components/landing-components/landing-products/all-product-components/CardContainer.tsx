@@ -1,6 +1,6 @@
 import { FlexChild } from '../../..';
 import React, { FC } from 'react';
-import Card from './ProductCard';
+// import Card from './ProductCard';
 
 // Import Swiper React components
 import { SwiperSlide } from 'swiper/react';
@@ -35,7 +35,7 @@ const CardContainer: FC<FlexChild & { data: [] }> = ({ data }) => {
 					i: number
 				) => (
 					<SwiperSlide key={i}>
-						<Card {...item} />
+						<p>..</p>
 					</SwiperSlide>
 				)
 			)}
