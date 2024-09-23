@@ -11,11 +11,17 @@ import {
 	Button,
 	ButtonChild,
 	PLACEHOLDER_IMAGE,
+	useAppDispatch,
+	FlexChild,
 } from '../../..';
+import { addToCart } from '@/store/slices/cartSlice';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@chakra-ui/react';
 
 // const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
 
 type ProductCardProps = {
+	_id: string;
 	name: string;
 	price: number | string;
 	image: string;
@@ -24,11 +30,29 @@ type ProductCardProps = {
 	};
 };
 
-const ProductCard: FC<ProductCardProps> = ({ name, price, image, category }) => {
+const ProductCard: FC<ProductCardProps> = ({ _id, name, price, image, category }) => {
+	const dispatch = useAppDispatch();
+	const toast = useToast();
+	const router = useRouter();
+	const handleAddToCart = (e: React.MouseEvent<any>) => {
+		e.stopPropagation();
+		dispatch(addToCart({ item: { _id, name, price, vat: 0, image, category } }));
+		toast({
+			title: `1 ${name} added to bag`,
+			status: 'success',
+			duration: 2000,
+			isClosable: true,
+			variant: 'subtle',
+		});
+	};
+	const toProductPage = () => {
+		// navigate to product page
+		router.push(`/product/${_id}`);
+	};
 	return (
-		<Container>
+		<Container onClick={toProductPage}>
 			<CardImage src={image || PLACEHOLDER_IMAGE}>
-				<AddToCartButton>Add to Cart</AddToCartButton>
+				<AddToCartButton onClick={handleAddToCart}>Add to Cart</AddToCartButton>
 			</CardImage>
 			<Column>
 				<Text fontSize='1.2rem'>BDT. {price}</Text>
@@ -39,13 +63,15 @@ const ProductCard: FC<ProductCardProps> = ({ name, price, image, category }) => 
 	);
 };
 
-const Container = ({ children }: { children: ReactNode }) => (
+const Container = ({ children, ...props }: FlexChild) => (
 	<Column
+		cursor='pointer'
 		pb={8}
 		pt={4}
 		userSelect='none'
 		w='full'
-		gap={4}>
+		gap={4}
+		{...props}>
 		{children}
 	</Column>
 );

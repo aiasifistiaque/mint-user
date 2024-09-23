@@ -14,6 +14,7 @@ import 'swiper/css/pagination';
 import { useGetAllQuery } from '@/store/services/commonApi';
 
 type ProductCardProps = {
+	_id: string;
 	name: string;
 	price: number | string;
 	image: string;

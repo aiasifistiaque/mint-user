@@ -1,13 +1,14 @@
-import { Flex, FlexProps } from '@chakra-ui/react';
+import { Center, Flex, FlexProps, Spinner } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { Header, Body, Footer } from '..';
 import { ColorMode } from '@/components';
 
 type LayoutProps = FlexProps & {
 	children: React.ReactNode;
+	isLoading?: boolean;
 };
 
-const Layout: FC<LayoutProps> = ({ children, ...props }) => {
+const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
 	return (
 		<Flex
 			flexDir='column'
@@ -16,7 +17,18 @@ const Layout: FC<LayoutProps> = ({ children, ...props }) => {
 			flex={1}
 			{...props}>
 			<Header />
-			<Body>{children}</Body>
+			<Body>
+				{isLoading ? (
+					<Center
+						w='full'
+						flex={1}
+						h='100%'>
+						<Spinner />
+					</Center>
+				) : (
+					children
+				)}
+			</Body>
 			<Footer />
 			<ColorMode />
 		</Flex>

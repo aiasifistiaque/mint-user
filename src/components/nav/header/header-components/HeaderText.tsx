@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { Link, Text } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
+import Link from 'next/link';
 
 const HeaderText: FC<{ children: string; href: string }> = ({ children, href }) => {
 	return (

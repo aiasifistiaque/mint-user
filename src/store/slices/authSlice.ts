@@ -28,7 +28,7 @@ export const authSlice = createSlice({
 			localStorage.setItem(REFRESH_TOKEN, 'null');
 			state.token = null;
 			state.loggedIn = false;
-			void (document.location.href = '/auth/login');
+			window.location.reload();
 		},
 		login: (state, action: PayloadAction<LoginPayloadType>): void => {
 			const { token }: LoginPayloadType = action.payload;
@@ -36,7 +36,7 @@ export const authSlice = createSlice({
 			state.loggedIn = true;
 			localStorage.setItem(TOKEN_NAME, token);
 			// localStorage.setItem(REFRESH_TOKEN, refreshToken);
-			void (document.location.href = '/');
+			window.location.reload();
 		},
 		refresh: (state, action: PayloadAction<string>): void => {
 			localStorage.setItem(TOKEN_NAME, action.payload);

@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { HeaderContainer, Logo, HeaderSection, HeaderText, HeaderIcon } from './';
-import { IconNameOptions } from '../../';
+import { CartDrawer, IconNameOptions } from '../../';
+import HeaderMenu from './header-components/HeaderMenu';
 
 type ItemProps = { name: string; href: string };
 const headerItems: ItemProps[] = [
@@ -19,23 +20,23 @@ const headerItems: ItemProps[] = [
 	},
 ];
 
-const headerIcons: {
-	name: IconNameOptions;
-	href: string;
-}[] = [
-	{
-		name: 'search',
-		href: '#',
-	},
-	{
-		name: 'cart',
-		href: '#',
-	},
-	{
-		name: 'grid',
-		href: '#',
-	},
-];
+// const headerIcons: {
+// 	name: IconNameOptions;
+// 	href: string;
+// }[] = [
+// 	{
+// 		name: 'search',
+// 		href: '#',
+// 	},
+// 	{
+// 		name: 'cart',
+// 		href: '#',
+// 	},
+// 	{
+// 		name: 'grid',
+// 		href: '#',
+// 	},
+// ];
 
 const Header = () => {
 	return (
@@ -59,13 +60,20 @@ const Header = () => {
 			<HeaderSection
 				gap={{ base: 4, md: 8 }}
 				justify='flex-end'>
-				{headerIcons.map((item, i) => (
+				<HeaderIcon
+					name='search'
+					// href='#'
+				/>
+				<CartDrawer>
+					<HeaderIcon name='cart' />
+				</CartDrawer>
+
+				<HeaderMenu>
 					<HeaderIcon
-						name={item.name}
-						key={i}
-						href={item.href}
+						name='grid'
+						// href='#'
 					/>
-				))}
+				</HeaderMenu>
 			</HeaderSection>
 		</HeaderContainer>
 	);
