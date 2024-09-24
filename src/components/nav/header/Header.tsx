@@ -1,8 +1,14 @@
+'use client';
+
 import React from 'react';
 
 import { HeaderContainer, Logo, HeaderSection, HeaderText, HeaderIcon } from './';
 import { CartDrawer, IconNameOptions } from '../../';
 import HeaderMenu from './header-components/HeaderMenu';
+
+import { useAppSelector } from '@/components/hooks';
+import { Center, Flex } from '@chakra-ui/react';
+import SearchDrawer from '@/components/search/SearchDrawer';
 
 type ItemProps = { name: string; href: string };
 const headerItems: ItemProps[] = [
@@ -39,6 +45,10 @@ const headerItems: ItemProps[] = [
 // ];
 
 const Header = () => {
+	const { cartItems } = useAppSelector(state => state.cart);
+	const cartCount = () => {
+		return cartItems.reduce((acc: any, item: any) => acc + item.qty, 0);
+	};
 	return (
 		<HeaderContainer>
 			<HeaderSection display={{ base: 'none', md: 'flex' }}>
@@ -60,12 +70,24 @@ const Header = () => {
 			<HeaderSection
 				gap={{ base: 4, md: 8 }}
 				justify='flex-end'>
-				<HeaderIcon
-					name='search'
-					// href='#'
-				/>
+				<SearchDrawer>
+					<HeaderIcon
+						name='search'
+						// href='#'
+					/>
+				</SearchDrawer>
 				<CartDrawer>
 					<HeaderIcon name='cart' />
+					<Center
+						ml='-8px'
+						color='white'
+						borderRadius='full'
+						bg='black'
+						h='16px'
+						fontSize='12px'
+						w='16px'>
+						{cartCount()}
+					</Center>
 				</CartDrawer>
 
 				<HeaderMenu>

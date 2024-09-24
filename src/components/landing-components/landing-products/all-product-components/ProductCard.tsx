@@ -16,21 +16,30 @@ import {
 } from '../../..';
 import { addToCart } from '@/store/slices/cartSlice';
 import { useRouter } from 'next/navigation';
-import { useToast } from '@chakra-ui/react';
+import { useToast, FlexProps } from '@chakra-ui/react';
 
 // const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
 
-type ProductCardProps = {
+type ProductCardProps = FlexProps & {
 	_id: string;
 	name: string;
 	price: number | string;
 	image: string;
+	stock: number;
 	category: {
 		name: string;
 	};
 };
 
-const ProductCard: FC<ProductCardProps> = ({ _id, name, price, image, category }) => {
+const ProductCard: FC<ProductCardProps> = ({
+	_id,
+	name,
+	price,
+	image,
+	category,
+	stock,
+	...props
+}) => {
 	const dispatch = useAppDispatch();
 	const toast = useToast();
 	const router = useRouter();
@@ -50,9 +59,15 @@ const ProductCard: FC<ProductCardProps> = ({ _id, name, price, image, category }
 		router.push(`/product/${_id}`);
 	};
 	return (
-		<Container onClick={toProductPage}>
+		<Container
+			onClick={toProductPage}
+			{...props}>
 			<CardImage src={image || PLACEHOLDER_IMAGE}>
-				<AddToCartButton onClick={handleAddToCart}>Add to Cart</AddToCartButton>
+				{stock > 0 ? (
+					<AddToCartButton onClick={handleAddToCart}>Add to Cart</AddToCartButton>
+				) : (
+					<AddToCartButton isDisabled>Out Of Stock</AddToCartButton>
+				)}
 			</CardImage>
 			<Column>
 				<Text fontSize='1.2rem'>BDT. {price}</Text>

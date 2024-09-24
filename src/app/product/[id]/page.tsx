@@ -81,11 +81,19 @@ const ProductPage = () => {
 									<Text fontWeight='600'>Subtotal: BDT {(qty * data?.price).toLocaleString()}</Text>
 								</Align>
 							</Stack>
-							<Button
-								size='lg'
-								onClick={handleAddToCart}>
-								Add To Cart
-							</Button>
+							{data?.stock > 0 ? (
+								<Button
+									size='lg'
+									onClick={handleAddToCart}>
+									Add To Cart
+								</Button>
+							) : (
+								<Button
+									size='lg'
+									isDisabled>
+									Out Of Stock
+								</Button>
+							)}
 						</Column>
 						<Column
 							gap={4}
