@@ -25,7 +25,7 @@ type ProductCardProps = FlexProps & {
 	name: string;
 	price: number | string;
 	image: string;
-	stock: number;
+	stock?: number;
 	category: {
 		name: string;
 	};
@@ -37,7 +37,7 @@ const ProductCard: FC<ProductCardProps> = ({
 	price,
 	image,
 	category,
-	stock,
+	stock = 0,
 	...props
 }) => {
 	const dispatch = useAppDispatch();
