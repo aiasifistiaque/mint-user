@@ -9,40 +9,9 @@ import HeaderMenu from './header-components/HeaderMenu';
 import { useAppSelector } from '@/components/hooks';
 import { Center, Flex } from '@chakra-ui/react';
 import SearchDrawer from '@/components/search/SearchDrawer';
+import CategoriesMenu from './header-components/CategoriesMenu';
 
 type ItemProps = { name: string; href: string };
-const headerItems: ItemProps[] = [
-	{
-		name: 'Home',
-		href: '/',
-	},
-	{
-		name: 'Categories',
-		href: '/categories',
-	},
-	{
-		name: 'Shop',
-		href: '/contact',
-	},
-];
-
-// const headerIcons: {
-// 	name: IconNameOptions;
-// 	href: string;
-// }[] = [
-// 	{
-// 		name: 'search',
-// 		href: '#',
-// 	},
-// 	{
-// 		name: 'cart',
-// 		href: '#',
-// 	},
-// 	{
-// 		name: 'grid',
-// 		href: '#',
-// 	},
-// ];
 
 const Header = () => {
 	const { cartItems } = useAppSelector(state => state.cart);
@@ -52,13 +21,12 @@ const Header = () => {
 	return (
 		<HeaderContainer>
 			<HeaderSection display={{ base: 'none', md: 'flex' }}>
-				{headerItems.map((item, i) => (
-					<HeaderText
-						href={item?.href}
-						key={i}>
-						{item?.name}
-					</HeaderText>
-				))}
+				<HeaderText href='/'>Home</HeaderText>
+				<CategoriesMenu>
+					<HeaderText>Categories</HeaderText>
+				</CategoriesMenu>
+
+				<HeaderText>Shop</HeaderText>
 			</HeaderSection>
 			<HeaderSection display={{ base: 'flex', md: 'none' }}>
 				<HeaderIcon

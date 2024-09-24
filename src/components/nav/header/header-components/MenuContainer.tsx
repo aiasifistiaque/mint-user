@@ -1,0 +1,23 @@
+import React from 'react';
+import { MenuList, MenuListProps } from '@chakra-ui/react';
+
+type MenuContainerProps = MenuListProps & {
+	children: React.ReactNode;
+};
+
+const MenuContainer: React.FC<MenuContainerProps> = ({ children, ...props }) => {
+	return (
+		<MenuList
+			boxShadow='lg'
+			borderRadius='xl'
+			// bg='menu.light'
+			_dark={{
+				bg: 'eblack.200',
+			}}
+			{...props}>
+			{children}
+		</MenuList>
+	);
+};
+
+export default MenuContainer;

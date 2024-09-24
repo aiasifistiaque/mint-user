@@ -6,4 +6,7 @@ export { default as HeaderSection } from './header-components/HeaderSection';
 export { default as HeaderText } from './header-components/HeaderText';
 export { default as HeaderIcon } from './header-components/HeaderIcon';
 
+export { default as MenuItem } from './header-components/MenuItem';
+export { default as MenuContainer } from './header-components/MenuContainer';
+
 export default Header;
