@@ -18,6 +18,10 @@ const CategoriesMenu = ({ children }: { children: ReactNode }) => {
 		<Menu>
 			<MenuButton>{children}</MenuButton>
 			<MenuContainer>
+				<Link href={`/category`}>
+					<MenuItem>All Categories</MenuItem>
+				</Link>
+
 				{data &&
 					data?.doc.map((item: any, i: number) => (
 						<Link

@@ -14,40 +14,57 @@ import { useParams } from 'next/navigation';
 import React, { ReactNode } from 'react';
 import { Box, Center, Grid, Select, Spinner } from '@chakra-ui/react';
 import { ProductCard } from '@/components/landing-components/landing-products';
-import { CategoryCard } from '@/components/landing-components/all-categories';
-import Link from 'next/link';
 
 const CategoryPage = () => {
-	const [sort, setSort] = React.useState('priority');
+	const { id } = useParams<{ id: string }>();
+	const [sort, setSort] = React.useState('-createdAt');
 
-	const { data, isFetching, isUninitialized, isError } = useGetAllQuery({
-		path: 'categories',
-		sort,
-		limit: 999,
-		filters: {
-			isActive: true,
+	const { data: catData, isFetching: catFetching } = useGetByIdQuery(
+		{
+			path: 'collections',
+			id: id,
 		},
-	});
+		{ skip: !id }
+	);
 
-	const { data: colData } = useGetAllQuery({
-		path: 'collections',
-		sort,
-		limit: 999,
-		filters: {
-			isActive: true,
+	const { data, isFetching, isUninitialized, isError } = useGetAllQuery(
+		{
+			path: 'products',
+			sort,
+			filters: {
+				collection_in: id,
+			},
 		},
-	});
+		{ skip: !id }
+	);
 
 	return (
-		<Layout isLoading={isFetching || !data}>
+		<Layout isLoading={catFetching}>
 			<Column
 				gap={2}
 				p={{ base: 4, md: 6 }}>
 				<SpaceBetween>
 					<Column>
-						<Title type='h3'>All Categories</Title>
-						<SubHeading>Explore Our Categories</SubHeading>
+						<Title type='h3'>{catData?.name}</Title>
+						<SubHeading>
+							{catData?.description || `Explore products from category ${catData?.name}`}
+						</SubHeading>
 					</Column>
+
+					<Box>
+						<Select
+							value='sort'
+							placeholder='Sort by'
+							onChange={e => {
+								setSort(e.target.value);
+							}}>
+							<option value='-price'>Price (High-Low)</option>
+							<option value='price'>Price (Low-High)</option>
+							<option value='name'>Name (A-Z)</option>
+							<option value='-name'>Price (Z-A)</option>
+							<option value='-createdAt'>Newest</option>
+						</Select>
+					</Box>
 				</SpaceBetween>
 			</Column>
 
@@ -56,7 +73,7 @@ const CategoryPage = () => {
 				pb={32}
 				gap={4}
 				gridTemplateColumns={{
-					base: '1fr 1fr',
+					base: '1fr',
 					md: '1fr 1fr 1fr 1fr',
 					lg: '1fr 1fr 1fr 1fr 1fr',
 				}}>
@@ -66,26 +83,12 @@ const CategoryPage = () => {
 					</Center>
 				) : (
 					<>
+						{data?.totalDocs === 0 && <Center>No products found</Center>}
 						{data?.doc?.map((item: any, i: number) => (
-							<Link
-								href={`/category/${item._id}`}
-								key={i}>
-								<CategoryCard
-									type='categories'
-									id={item._id}
-								/>
-							</Link>
-						))}
-						{colData?.doc?.map((item: any, i: number) => (
-							<Link
-								href={`/category/collection/${item._id}`}
-								key={i}>
-								<CategoryCard
-									key={i}
-									type='collections'
-									id={item._id}
-								/>
-							</Link>
+							<ProductCard
+								key={i}
+								{...item}
+							/>
 						))}
 					</>
 				)}
