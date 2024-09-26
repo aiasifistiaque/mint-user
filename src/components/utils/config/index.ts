@@ -20,7 +20,7 @@ export const sizes = {
 	BODY_MIN_HEIGHT_BASE: `calc(100vh - ${navbarHeightMobile})`,
 	RADIUS: 'xl',
 	PRODUCT_CARD_HEIGHT: '360px',
-	CATEGORY_CARD_HEIGHT: '260px',
+	CATEGORY_CARD_HEIGHT: '300px',
 };
 
 export const swiper = {

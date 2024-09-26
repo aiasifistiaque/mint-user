@@ -10,10 +10,12 @@ import { useAppSelector } from '@/components/hooks';
 import { Center, Flex } from '@chakra-ui/react';
 import SearchDrawer from '@/components/search/SearchDrawer';
 import CategoriesMenu from './header-components/CategoriesMenu';
+import { useGetStoreQuery } from '@/store/services/storeApi';
 
 type ItemProps = { name: string; href: string };
 
 const Header = () => {
+	const { data, isLoading } = useGetStoreQuery({});
 	const { cartItems } = useAppSelector(state => state.cart);
 	const cartCount = () => {
 		return cartItems.reduce((acc: any, item: any) => acc + item.qty, 0);
@@ -34,7 +36,10 @@ const Header = () => {
 					href='#'
 				/>
 			</HeaderSection>
-			<Logo>MintStore</Logo>
+			<Logo
+				logo={data?.basic?.logo}
+				isLoading={isLoading}
+			/>
 			<HeaderSection
 				gap={{ base: 4, md: 8 }}
 				justify='flex-end'>

@@ -1,6 +1,8 @@
 export { default as useIsMobile } from './useIsMobile';
 export * from './useReduxHooks';
 export { default as useGetItemNameById } from './useGetItemNameById';
+export { default as useAuth } from './useAuth';
+export { default as useColors } from './useColors';
 
 // Dependencies: none
 

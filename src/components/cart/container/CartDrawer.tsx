@@ -14,10 +14,10 @@ import {
 	Flex,
 	Text,
 } from '@chakra-ui/react';
-import { useAppSelector } from '@/components/hooks';
+
 import { CartItemProps, CartItem } from '../';
-import { Column, SpaceBetween } from '@/components/containers';
-import { useAuth } from '@/components/hooks/useAuth';
+import { Column, SpaceBetween, useColors, useAppSelector, useAuth } from '@/components';
+
 import LoginModal from '@/components/auth/LoginModal';
 import Link from 'next/link';
 
@@ -27,6 +27,8 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 	const { isLoggedIn } = useAuth();
 
 	const { cartItems, subTotal } = useAppSelector(state => state.cart);
+
+	const { colors } = useColors();
 
 	return (
 		<>
@@ -43,9 +45,9 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 				onClose={onClose}
 				finalFocusRef={btnRef}>
 				<DrawerOverlay />
-				<DrawerContent bg='white'>
+				<DrawerContent bg={colors.bg}>
 					<DrawerCloseButton />
-					<DrawerHeader bg='#fafafa'>Shopping Cart</DrawerHeader>
+					<DrawerHeader bg={colors.dark}>Shopping Cart</DrawerHeader>
 
 					<DrawerBody>
 						<Column gap={4}>

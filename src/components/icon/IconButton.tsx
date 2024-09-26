@@ -5,6 +5,7 @@ import { Icon, IconNameOptions } from '..';
 const IconButton = ({
 	// color,
 	iconName,
+	iconColor,
 	iconSize,
 	tooltip,
 	...props
@@ -13,6 +14,7 @@ const IconButton = ({
 	color?: string | undefined;
 	iconSize?: number;
 	tooltip?: string;
+	iconColor?: string;
 }) => {
 	const Container = ({ children }: { children: ReactNode }) => {
 		if (tooltip)
@@ -31,7 +33,7 @@ const IconButton = ({
 				icon={
 					<Icon
 						name={iconName}
-						// color={color || 'inherit'}
+						color={iconColor || 'inherit'}
 						size={iconSize}
 					/>
 				}

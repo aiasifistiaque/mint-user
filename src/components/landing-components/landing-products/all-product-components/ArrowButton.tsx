@@ -14,8 +14,8 @@ const ArrowButton = ({ name, onClick }: { name: IconNameOptions; onClick: () => 
 		bg='eblack.200'
 		borderColor='eblack.200'
 		borderWidth={1}
-		color='white'
-		_dark={{ color: 'white' }}
+		iconColor='white'
+		_dark={{ iconColor: 'white' }}
 		_hover={{
 			bg: 'white',
 			color: 'eblack.200',

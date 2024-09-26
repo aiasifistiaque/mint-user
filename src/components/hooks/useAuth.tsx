@@ -9,7 +9,7 @@ type UseAuthReturnProps = {
 	token: string;
 };
 
-export const useAuth = (): UseAuthReturnProps => {
+const useAuth = (): UseAuthReturnProps => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [isLoggedIn, setIsLoggedIn] = useState<boolean | undefined>(undefined);
 	const [authToken, setAuthToken] = useState<string>('');
@@ -32,3 +32,5 @@ export const useAuth = (): UseAuthReturnProps => {
 
 	return { isLoading, isLoggedIn, token: authToken };
 };
+
+export default useAuth;
