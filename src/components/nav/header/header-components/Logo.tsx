@@ -1,6 +1,7 @@
 import { FlexChild, Title } from '../../..';
 import React, { FC } from 'react';
 import { Center, Image } from '@chakra-ui/react';
+import Link from 'next/link';
 
 const Logo: FC<FlexChild & { isLoading: boolean; logo: any }> = ({
 	children,
@@ -19,9 +20,12 @@ const Logo: FC<FlexChild & { isLoading: boolean; logo: any }> = ({
 			</Center>
 		);
 	return (
-		<Center {...props}>
+		<Center
+			as={Link}
+			href='/'
+			{...props}>
 			<Image
-				w='100px'
+				w='160px'
 				h='auto'
 				objectFit='contain'
 				src={logo}

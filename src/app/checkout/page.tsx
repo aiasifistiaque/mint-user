@@ -148,6 +148,10 @@ const CheckoutPage = () => {
 				<Column>
 					<CheckoutItems />
 					<Button
+						bg='#202020'
+						border='1px solid #202020'
+						color='white'
+						_hover={{ bg: 'white', color: '#202020' }}
 						isLoading={result.isLoading}
 						isDisabled={isDisabled}
 						onClick={onSubmit}>

@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 
 import { CartItemProps, CartItem } from '../';
-import { Column, SpaceBetween, useColors, useAppSelector, useAuth } from '@/components';
+import { Column, SpaceBetween, useColors, useAppSelector, useAuth, currency } from '@/components';
 
 import LoginModal from '@/components/auth/LoginModal';
 import Link from 'next/link';
@@ -28,7 +28,7 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 
 	const { cartItems, subTotal } = useAppSelector(state => state.cart);
 
-	const { colors } = useColors();
+	const colors = useColors();
 
 	return (
 		<>
@@ -66,7 +66,9 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 								fontSize='1.2rem'
 								fontWeight='600'>
 								<Text>Subtotal</Text>
-								<Text>BDT. {subTotal.toLocaleString()}</Text>
+								<Text>
+									{currency?.symbol} {subTotal.toLocaleString()}
+								</Text>
 							</SpaceBetween>
 							{isLoggedIn ? (
 								<Link href='/checkout'>

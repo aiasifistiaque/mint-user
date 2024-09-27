@@ -1,11 +1,10 @@
 'use client';
 
-import { Layout, Column } from '@/components';
+import { Layout, Column, currency, Align, SpaceBetween } from '@/components';
 import { useGetByIdQuery } from '@/store/services/commonApi';
 import { Text, Heading, Grid, Image } from '@chakra-ui/react';
 import { useParams } from 'next/navigation';
 import React from 'react';
-import { Align, SpaceBetween } from '@/components/containers';
 
 const Invoice = () => {
 	const { id } = useParams();
@@ -63,11 +62,13 @@ const Invoice = () => {
 						</Align>
 						<Align>
 							<Heading size='sm'>
-								BDT. {item.unitPrice} x {item.qty}
+								{currency?.symbol} {item.unitPrice} x {item.qty}
 							</Heading>
 						</Align>
 						<Align>
-							<Heading size='sm'>BDT. {item?.totalPrice.toLocaleString()}</Heading>
+							<Heading size='sm'>
+								{currency?.symbol} {item?.totalPrice.toLocaleString()}
+							</Heading>
 						</Align>
 					</Grid>
 				))}
@@ -76,14 +77,18 @@ const Invoice = () => {
 					borderTop='1px dashed'
 					pt={4}>
 					<Heading size='md'>Subtotal</Heading>
-					<Heading size='md'>BDT. {data?.subTotal}</Heading>
+					<Heading size='md'>
+						{currency?.symbol} {data?.subTotal}
+					</Heading>
 				</SpaceBetween>
 
 				<SpaceBetween
 					borderTop='1px dashed'
 					pt={4}>
 					<Heading size='md'>Total</Heading>
-					<Heading size='md'>BDT. {data?.subTotal}</Heading>
+					<Heading size='md'>
+						{currency?.symbol} {data?.subTotal}
+					</Heading>
 				</SpaceBetween>
 			</Column>
 		</Layout>

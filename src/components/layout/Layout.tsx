@@ -1,6 +1,6 @@
 import { Center, Flex, FlexProps, Spinner } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { Header, Body, Footer } from '..';
+import { Header, Body, Footer, Banner } from '..';
 import { ColorMode } from '@/components';
 
 type LayoutProps = FlexProps & {
@@ -16,7 +16,17 @@ const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
 			w='100%'
 			flex={1}
 			{...props}>
-			<Header />
+			<Flex
+				flexDir='column'
+				position='fixed'
+				top={0}
+				left={0}
+				zIndex='999'
+				w='full'>
+				<Banner />
+				<Header />
+			</Flex>
+
 			<Body>
 				{isLoading ? (
 					<Center
@@ -30,7 +40,7 @@ const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
 				)}
 			</Body>
 			<Footer />
-			<ColorMode />
+			{/* <ColorMode /> */}
 		</Flex>
 	);
 };

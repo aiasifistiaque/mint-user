@@ -28,7 +28,7 @@ const Header = () => {
 					<HeaderText>Categories</HeaderText>
 				</CategoriesMenu>
 
-				<HeaderText>Shop</HeaderText>
+				<HeaderText href='/explore'>Shop</HeaderText>
 			</HeaderSection>
 			<HeaderSection display={{ base: 'flex', md: 'none' }}>
 				<HeaderIcon

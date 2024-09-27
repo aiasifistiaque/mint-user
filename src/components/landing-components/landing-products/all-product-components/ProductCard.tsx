@@ -13,6 +13,7 @@ import {
 	PLACEHOLDER_IMAGE,
 	useAppDispatch,
 	FlexChild,
+	currency,
 } from '../../..';
 import { addToCart } from '@/store/slices/cartSlice';
 import { useRouter } from 'next/navigation';
@@ -70,7 +71,9 @@ const ProductCard: FC<ProductCardProps> = ({
 				)}
 			</CardImage>
 			<Column>
-				<Text fontSize='1.2rem'>BDT. {price}</Text>
+				<Text fontSize='1.2rem'>
+					{currency?.symbol} {price?.toLocaleString()}
+				</Text>
 				<Title type='h6'>{name}</Title>
 				<SubHeading fontSize='1.1rem'>{category?.name}</SubHeading>
 			</Column>

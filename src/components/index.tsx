@@ -8,7 +8,9 @@ export * from './text';
 export * from './hooks';
 export * from './cart';
 
-export { default as useColors } from '../theme/useColors';
+// export { default as useColors } from '../theme/useColors';
+export * from './product-components';
 
 export * from './icon';
 export { default as Layout } from './layout/Layout';
+export * from './filters';

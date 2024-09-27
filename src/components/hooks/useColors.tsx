@@ -1,11 +1,27 @@
 import { useColorModeValue } from '@chakra-ui/react';
 
-const useColors = () => {
+export type ColorProps = {
+	bg: string;
+	dark: string;
+	headerBg: string;
+	border: string;
+	darkBg: string;
+};
+
+const useColors = (): ColorProps => {
 	const bg = useColorModeValue('white', '#202020');
 	const dark = useColorModeValue('#fafafa', 'black');
 
+	const headerBg = useColorModeValue('white', 'eblack.200');
+	const border = useColorModeValue('eborder.600', 'eborder.600');
+	const darkBg = useColorModeValue('#202020', 'black');
+
 	return {
-		colors: { bg, dark },
+		bg,
+		dark,
+		headerBg,
+		border,
+		darkBg,
 	};
 };
 

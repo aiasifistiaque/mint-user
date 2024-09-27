@@ -1,11 +1,10 @@
 'use client';
-import { Column, Layout, Align, Button, AllProducts } from '@/components';
+import { Column, Layout, Align, Button, AllProducts, currency, useAppDispatch } from '@/components';
 import { useGetByIdQuery } from '@/store/services/commonApi';
 import { useParams } from 'next/navigation';
 import React, { ReactNode, useState } from 'react';
 import { Flex, Grid, Image, Text, Stack, useToast } from '@chakra-ui/react';
 
-import { useAppDispatch } from '@/components/hooks';
 import { addToCart } from '@/store/slices/cartSlice';
 import { BasicDetails, QtySelect, ProductAccordion } from './_components';
 
@@ -78,7 +77,9 @@ const ProductPage = () => {
 										handleRemoveOne={handleRemoveOne}>
 										{qty}
 									</QtySelect>
-									<Text fontWeight='600'>Subtotal: BDT {(qty * data?.price).toLocaleString()}</Text>
+									<Text fontWeight='600'>
+										Subtotal: {currency?.symbol} {(qty * data?.price).toLocaleString()}
+									</Text>
 								</Align>
 							</Stack>
 							{data?.stock > 0 ? (

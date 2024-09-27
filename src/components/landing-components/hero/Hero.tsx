@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 import { BgImage, Column, FlexChild, PrimaryButton, SubHeading, Title } from '../..';
+import Link from 'next/link';
 
 type HeroProps = {
 	image: string;
@@ -23,7 +24,9 @@ const Hero: FC<HeroProps> = ({
 				<ContentBox>
 					<Title lineHeight={1.2}>{title}</Title>
 					<SubHeading>{subTitle}</SubHeading>
-					<CTAButton>{btnText}</CTAButton>
+					<Link href='/explore'>
+						<CTAButton>{btnText}</CTAButton>
+					</Link>
 				</ContentBox>
 			</Overlay>
 		</Container>

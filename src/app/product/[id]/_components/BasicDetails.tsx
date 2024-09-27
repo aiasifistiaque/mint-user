@@ -1,5 +1,5 @@
 import React from 'react';
-import { SubHeading, Title, Column } from '@/components';
+import { SubHeading, Title, Column, currency } from '@/components';
 
 const BasicDetails = ({
 	name,
@@ -18,7 +18,7 @@ const BasicDetails = ({
 		<Title
 			fontWeight='500'
 			type='h6'>
-			BDT. {price.toLocaleString()}
+			{currency?.symbol} {price.toLocaleString()}
 		</Title>
 		<Title
 			type='h3'

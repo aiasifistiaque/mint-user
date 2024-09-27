@@ -1,31 +1,26 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Text } from '@chakra-ui/react';
 import Link from 'next/link';
 
+const TextStyle = ({ children }: { children: ReactNode }) => (
+	<Text
+		// mixBlendMode='difference'
+		fontSize='.9rem'
+		color='black'
+		fontWeight='500'
+		// _hover={{
+		// 	color: 'etext.600',
+		// }}
+	>
+		{children}
+	</Text>
+);
+
 const HeaderText: FC<{ children: string; href?: string }> = ({ children, href }) => {
-	if (!href)
-		return (
-			<Text
-				fontSize='1rem'
-				color='etext.400'
-				fontWeight='600'
-				_hover={{
-					color: 'etext.600',
-				}}>
-				{children}
-			</Text>
-		);
+	if (!href) return <TextStyle>{children}</TextStyle>;
 	return (
 		<Link href={href}>
-			<Text
-				fontSize='1rem'
-				color='etext.400'
-				fontWeight='600'
-				_hover={{
-					color: 'etext.600',
-				}}>
-				{children}
-			</Text>
+			<TextStyle>{children}</TextStyle>
 		</Link>
 	);
 };

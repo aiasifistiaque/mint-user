@@ -5,6 +5,7 @@ import { ProductCard, ArrowButton } from './';
 import { Flex } from '@chakra-ui/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper';
+import Link from 'next/link';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -42,6 +43,8 @@ const AllProducts: FC<AllProductCardProps> = ({ title, subTitle, type, id }) => 
 			sort: 'priority',
 		},
 	});
+
+	const href = type == 'category' ? `/category/${id}` : `/category/collection/${id}`;
 
 	const renderCategoryCards =
 		!isFetching &&
@@ -86,7 +89,11 @@ const AllProducts: FC<AllProductCardProps> = ({ title, subTitle, type, id }) => 
 				breakpoints={swiper.BREAKPOINTS.PRODUCT}>
 				{renderCategoryCards}
 			</Flex>
-			<Button variant='secondary'>View More</Button>
+			<Link
+				href={href}
+				style={{ width: '100%' }}>
+				<Button variant='secondary'>View More</Button>
+			</Link>
 		</Column>
 	);
 };

@@ -10,3 +10,4 @@ export { default as MenuItem } from './header-components/MenuItem';
 export { default as MenuContainer } from './header-components/MenuContainer';
 
 export default Header;
+export { default as Banner } from './Banner';

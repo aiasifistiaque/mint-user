@@ -3,6 +3,7 @@ export * from './useReduxHooks';
 export { default as useGetItemNameById } from './useGetItemNameById';
 export { default as useAuth } from './useAuth';
 export { default as useColors } from './useColors';
+export type { ColorProps } from './useColors';
 
 // Dependencies: none
 

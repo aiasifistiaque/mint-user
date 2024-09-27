@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppSelector } from '@/components/hooks';
-import { Align, CartItemProps, Column, SpaceBetween } from '@/components';
+
+import { Align, CartItemProps, Column, SpaceBetween, currency, useAppSelector } from '@/components';
 import { Button, Grid, Heading, Image, Input, Radio } from '@chakra-ui/react';
 
 const CheckoutItems = () => {
@@ -33,11 +33,13 @@ const CheckoutItems = () => {
 					</Align>
 					<Align>
 						<Heading size='sm'>
-							BDT. {item.price.toLocaleString()} x {item.qty}
+							{currency?.symbol} {item.price.toLocaleString()} x {item.qty}
 						</Heading>
 					</Align>
 					<Align>
-						<Heading size='sm'>BDT. {(item.price * item.qty).toLocaleString()}</Heading>
+						<Heading size='sm'>
+							{currency?.symbol} {(item.price * item.qty).toLocaleString()}
+						</Heading>
 					</Align>
 				</Grid>
 			))}
@@ -45,11 +47,13 @@ const CheckoutItems = () => {
 				borderTop='1px dashed'
 				pt={4}>
 				<Heading size='sm'>Shipping</Heading>
-				<Heading size='sm'>BDT. 0.00</Heading>
+				<Heading size='sm'>{currency?.symbol} 0.00</Heading>
 			</SpaceBetween>
 			<SpaceBetween>
 				<Heading size='sm'>Subtotal</Heading>
-				<Heading size='sm'>BDT. {subTotal.toLocaleString()}</Heading>
+				<Heading size='sm'>
+					{currency?.symbol} {subTotal.toLocaleString()}
+				</Heading>
 			</SpaceBetween>
 			<Column>
 				<Heading size='sm'>Payment Method</Heading>
@@ -71,7 +75,9 @@ const CheckoutItems = () => {
 				borderTop='1px dashed'
 				pt={4}>
 				<Heading size='sm'>Total</Heading>
-				<Heading size='sm'>BDT. {subTotal.toLocaleString()}</Heading>
+				<Heading size='sm'>
+					{currency?.symbol} {subTotal.toLocaleString()}
+				</Heading>
 			</SpaceBetween>
 		</Column>
 	);

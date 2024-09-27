@@ -4,6 +4,7 @@ import { authSlice } from './slices/authSlice';
 import { TOKEN_NAME } from './constants';
 import mainApi from './services/mainApi';
 import { cartSlice } from './slices/cartSlice';
+import { tableSlice } from './slices/tableSlice';
 
 // import { routeSlice, tableSlice, cartSlice, authSlice } from '@/components/library/store';
 
@@ -11,7 +12,7 @@ export const store = configureStore({
 	reducer: {
 		auth: authSlice.reducer,
 		// route: routeSlice.reducer,
-		// table: tableSlice.reducer,
+		table: tableSlice.reducer,
 		cart: cartSlice.reducer,
 		[mainApi.reducerPath]: mainApi.reducer,
 	},

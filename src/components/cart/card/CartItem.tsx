@@ -1,9 +1,8 @@
 import { Box, Button, ButtonGroup, Flex, Heading, Image, Text } from '@chakra-ui/react';
-import { useAppDispatch } from '@/components/hooks';
 import { addToCart, deleteOneFromCart, deleteSingleItemFromCart } from '@/store/slices/cartSlice';
 import React from 'react';
 import { CartItemProps } from '../';
-import { Column } from '@/components/containers';
+import { Column, currency, useAppDispatch } from '@/components';
 
 const CartItem = ({ image, id, name, price, qty }: CartItemProps) => {
 	const dispatch = useAppDispatch();
@@ -42,7 +41,9 @@ const CartItem = ({ image, id, name, price, qty }: CartItemProps) => {
 			</Box>
 			<Column>
 				<Heading size='sm'>{name}</Heading>
-				<Text>BDT. {price.toLocaleString()}</Text>
+				<Text>
+					{currency?.symbol} {price.toLocaleString()}
+				</Text>
 
 				<Box>
 					<ButtonGroup
