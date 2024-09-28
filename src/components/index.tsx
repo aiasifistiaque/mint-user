@@ -13,4 +13,8 @@ export * from './product-components';
 
 export * from './icon';
 export { default as Layout } from './layout/Layout';
+export { default as Section } from './layout/Section';
 export * from './filters';
+export * from './functions';
+
+export * from './dashboard';

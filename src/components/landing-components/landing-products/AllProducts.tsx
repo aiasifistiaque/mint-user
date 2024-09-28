@@ -89,11 +89,17 @@ const AllProducts: FC<AllProductCardProps> = ({ title, subTitle, type, id }) => 
 				breakpoints={swiper.BREAKPOINTS.PRODUCT}>
 				{renderCategoryCards}
 			</Flex>
-			<Link
-				href={href}
-				style={{ width: '100%' }}>
-				<Button variant='secondary'>View More</Button>
-			</Link>
+			<Flex
+				as={Link}
+				flex={1}
+				w='full'
+				href={href}>
+				<Button
+					w='full'
+					variant='secondary'>
+					View More
+				</Button>
+			</Flex>
 		</Column>
 	);
 };

@@ -22,7 +22,7 @@ const HeaderMenu = ({ children }: { children: ReactNode }) => {
 			<MenuContainer>
 				{isLoggedIn ? (
 					<>
-						<MenuItem>{data && data?.name}</MenuItem>
+						<MenuItem href='/dashboard/my-profile'> {data && data?.name}</MenuItem>
 						<MenuItem onClick={onLogout}>Logout</MenuItem>
 					</>
 				) : (

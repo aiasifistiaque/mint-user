@@ -23,7 +23,7 @@ const CategoryCard: FC<{ id: string; type: string }> = ({ id, type }) => {
 	return (
 		<Link href={href}>
 			<Column
-				pb={8}
+				pb={4}
 				pt={4}
 				userSelect='none'
 				w='full'

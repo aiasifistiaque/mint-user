@@ -54,9 +54,9 @@ const CategoryPage = () => {
 			<Grid
 				px={{ base: 4, md: 6 }}
 				pb={32}
-				gap={4}
+				gap={{ base: 2, md: 4 }}
 				gridTemplateColumns={{
-					base: '1fr 1fr',
+					base: '1fr',
 					md: '1fr 1fr 1fr 1fr',
 					lg: '1fr 1fr 1fr 1fr 1fr',
 				}}>

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { MenuItem as CMenuItem, MenuItemProps } from '@chakra-ui/react';
+import Link from 'next/link';
 
-const MenuItem = ({ children, ...props }: MenuItemProps & { children: React.ReactNode }) => {
-	return (
+type MenuProps = MenuItemProps & { href?: string; children: React.ReactNode };
+
+const MenuItem: FC<MenuProps> = ({ children, href, ...props }) => {
+	const item = (
 		<CMenuItem
 			_dark={{
 				bg: 'eblack.200',
@@ -11,6 +14,7 @@ const MenuItem = ({ children, ...props }: MenuItemProps & { children: React.Reac
 			{children}
 		</CMenuItem>
 	);
+	return href ? <Link href={href}>{item}</Link> : item;
 };
 
 export default MenuItem;

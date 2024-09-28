@@ -6,3 +6,6 @@ export { default as AllProducts } from './landing-products/AllProducts';
 export { default as About } from './about/About';
 export { default as FeaturedCollections } from './featured-collections/FeaturedCollections';
 export { default as ProductCard } from './landing-products/all-product-components/ProductCard';
+
+export { default as ProductSkeleton } from './landing-products/all-product-components/ProductSkeleton';
+export { default as ProductPageTitle } from './landing-products/all-product-components/ProductPageTitle';

@@ -6,6 +6,19 @@ import { Text, Heading, Grid, Image } from '@chakra-ui/react';
 import { useParams } from 'next/navigation';
 import React from 'react';
 
+const Item = ({ children, title }: { children: React.ReactNode; title: string }) => (
+	<Grid
+		gridTemplateColumns='1fr 3fr'
+		w='500px'>
+		<Heading
+			size='md'
+			fontSize='14px'>
+			{title}:
+		</Heading>
+		<Text fontSize='14px'>{children}</Text>
+	</Grid>
+);
+
 const Invoice = () => {
 	const { id } = useParams();
 	const { data } = useGetByIdQuery(
@@ -19,22 +32,27 @@ const Invoice = () => {
 		<Layout isLoading={!data}>
 			<Column
 				gap={4}
-				p={{ base: 4, md: 16 }}>
+				maxW='1000px'
+				mx='auto'
+				px={{ base: 4, md: 24 }}
+				pb={{ base: 4, md: 16 }}
+				pt={6}>
 				<Heading>Order Details</Heading>
 				<Column
 					gap={4}
 					borderBottom='1px dashed'
 					pb={4}>
-					<Heading size='md'>Invouce ID: {data?._id}</Heading>
+					<Heading size='md'>Invoice ID: {data?._id}</Heading>
 				</Column>
 				<Column
-					gap={4}
-					pb={4}>
-					<Heading size='md'>Delivery Address</Heading>
-					<Text>
-						{data?.address?.name}, {data?.address?.street}, {data?.address?.city}, ,{' '}
-						{data?.address?.zip}
-					</Text>
+					gap={2}
+					pb={2}>
+					<Item title='Customer'>
+						{data?.address?.name} ({data?.address?.email})
+					</Item>
+					<Item title='Phone'>{data?.address?.phone}</Item>
+					<Item title='Order Date'>{data?.orderDate}</Item>
+					<Item title='Order Status'>{data?.status}</Item>
 				</Column>
 
 				<Grid
@@ -44,7 +62,11 @@ const Invoice = () => {
 					py={4}>
 					<Heading size='sm'>Item</Heading>
 					<Heading size='sm'>qty</Heading>
-					<Heading size='sm'>Total</Heading>
+					<Heading
+						size='sm'
+						textAlign='right'>
+						Total
+					</Heading>
 				</Grid>
 
 				{data?.items.map((item: any, i: number) => (
@@ -61,12 +83,16 @@ const Invoice = () => {
 							<Heading size='sm'>{item.name}</Heading>
 						</Align>
 						<Align>
-							<Heading size='sm'>
+							<Text>
 								{currency?.symbol} {item.unitPrice} x {item.qty}
-							</Heading>
+							</Text>
 						</Align>
-						<Align>
-							<Heading size='sm'>
+						<Align
+							w='full'
+							justify='flex-end'>
+							<Heading
+								size='sm'
+								textAlign='right'>
 								{currency?.symbol} {item?.totalPrice.toLocaleString()}
 							</Heading>
 						</Align>
@@ -74,11 +100,18 @@ const Invoice = () => {
 				))}
 
 				<SpaceBetween
-					borderTop='1px dashed'
-					pt={4}>
+					pt={4}
+					borderTop='1px dashed'>
 					<Heading size='md'>Subtotal</Heading>
 					<Heading size='md'>
-						{currency?.symbol} {data?.subTotal}
+						{currency?.symbol} {data?.subTotal?.toLocaleString()}
+					</Heading>
+				</SpaceBetween>
+
+				<SpaceBetween pt={2}>
+					<Heading size='md'>VAT</Heading>
+					<Heading size='md'>
+						{currency?.symbol} {data?.vat?.toLocaleString()}
 					</Heading>
 				</SpaceBetween>
 
@@ -87,7 +120,7 @@ const Invoice = () => {
 					pt={4}>
 					<Heading size='md'>Total</Heading>
 					<Heading size='md'>
-						{currency?.symbol} {data?.subTotal}
+						{currency?.symbol} {data?.total?.toLocaleString()}
 					</Heading>
 				</SpaceBetween>
 			</Column>

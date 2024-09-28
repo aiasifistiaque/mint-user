@@ -3,14 +3,15 @@
 import React from 'react';
 
 import { HeaderContainer, Logo, HeaderSection, HeaderText, HeaderIcon } from './';
-import { CartDrawer, IconNameOptions } from '../../';
+import { CartDrawer } from '../../';
 import HeaderMenu from './header-components/HeaderMenu';
 
 import { useAppSelector } from '@/components/hooks';
-import { Center, Flex } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import SearchDrawer from '@/components/search/SearchDrawer';
 import CategoriesMenu from './header-components/CategoriesMenu';
 import { useGetStoreQuery } from '@/store/services/storeApi';
+import MenuDrawer from './MenuDrawer';
 
 type ItemProps = { name: string; href: string };
 
@@ -31,10 +32,11 @@ const Header = () => {
 				<HeaderText href='/explore'>Shop</HeaderText>
 			</HeaderSection>
 			<HeaderSection display={{ base: 'flex', md: 'none' }}>
-				<HeaderIcon
+				{/* <HeaderIcon
 					name='menu'
 					href='#'
-				/>
+				/> */}
+				<MenuDrawer />
 			</HeaderSection>
 			<Logo
 				logo={data?.basic?.logo}
@@ -52,13 +54,13 @@ const Header = () => {
 				<CartDrawer>
 					<HeaderIcon name='cart' />
 					<Center
-						ml='-8px'
+						ml={-2}
 						color='white'
 						borderRadius='full'
 						bg='black'
-						h='16px'
+						h={4}
 						fontSize='12px'
-						w='16px'>
+						w={4}>
 						{cartCount()}
 					</Center>
 				</CartDrawer>

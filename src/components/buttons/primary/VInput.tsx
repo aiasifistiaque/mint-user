@@ -38,6 +38,17 @@ const VInput: FC<InputContainerProps> = ({
 					spacing={1}
 					w='full'>
 					<Input
+						_focusActive={{
+							borderColor: 'black',
+						}}
+						_focus={{
+							borderColor: 'black',
+						}}
+						_active={{
+							borderColor: 'black',
+						}}
+						outline='none'
+						borderRadius='md'
 						size='sm'
 						px={3}
 						placeholder={placeholder ? placeholder : label}

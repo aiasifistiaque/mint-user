@@ -2,8 +2,6 @@
 import {
 	Column,
 	Layout,
-	Title,
-	SubHeading,
 	SpaceBetween,
 	SortBy,
 	FilterModal,
@@ -11,10 +9,11 @@ import {
 	ProductContainer,
 	LoadMoreButton,
 	ProductCard,
+	ProductPageTitle,
 } from '@/components';
 import { useGetAllQuery } from '@/store/services/commonApi';
-import React, { useEffect, useState } from 'react';
-import { Box } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
 
 const CategoryPage = () => {
 	const [sort, setSort] = React.useState('-createdAt');
@@ -36,17 +35,6 @@ const CategoryPage = () => {
 		if (!data) return false;
 		return data?.totalDocs > data?.doc?.length;
 	};
-
-	// useEffect(() => {
-	// 	if (!data) return;
-	// 	const newArr = [
-	// 		...display,
-	// 		...data?.doc.filter(
-	// 			(newItem: any) => !display.some((existingItem: any) => existingItem.id === newItem.id)
-	// 		),
-	// 	];
-	// 	setDisplay(newArr);
-	// }, [isFetching, data, isLoading, refetch]);
 
 	const reset = () => {
 		setDisplay([]);
@@ -83,18 +71,20 @@ const CategoryPage = () => {
 	);
 
 	return (
-		<Layout isLoading={isLoading}>
+		<Layout isLoading={false}>
 			<Column
 				gap={2}
 				p={{ base: 4, md: 6 }}>
 				<SpaceBetween>
-					<Column>
-						<Title type='h3'>Explore Products</Title>
-						<SubHeading>{data?.totalDocs || 0} Products Found</SubHeading>
-					</Column>
-
-					<Box>{filterBy}</Box>
-					<Box>{sortBy}</Box>
+					<ProductPageTitle title='Explore Products'>
+						{data?.totalDocs || 0} Products Found
+					</ProductPageTitle>
+					<Flex
+						gap={2}
+						flexDir={{ base: 'column-reverse', md: 'row' }}>
+						<Box>{filterBy}</Box>
+						<Box>{sortBy}</Box>
+					</Flex>
 				</SpaceBetween>
 			</Column>
 

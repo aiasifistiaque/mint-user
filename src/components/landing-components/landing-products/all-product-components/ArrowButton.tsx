@@ -12,11 +12,13 @@ const ArrowButton = ({ name, onClick }: { name: IconNameOptions; onClick: () => 
 		h={size}
 		borderRadius='full'
 		bg='eblack.200'
+		transition='all 0.3s ease'
 		borderColor='eblack.200'
 		borderWidth={1}
 		iconColor='white'
 		_dark={{ iconColor: 'white' }}
 		_hover={{
+			iconColor: 'eblack.200',
 			bg: 'white',
 			color: 'eblack.200',
 			_dark: { color: 'eblack.200' },
