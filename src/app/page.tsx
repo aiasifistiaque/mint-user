@@ -52,7 +52,7 @@ const HomePage = () => {
 
 	return (
 		<Layout>
-			<Column gap={16}>
+			<Column gap={8}>
 				<LandingSection>
 					<Hero {...data?.content?.hero} />
 				</LandingSection>

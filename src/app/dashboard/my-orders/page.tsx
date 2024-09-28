@@ -97,7 +97,7 @@ const tableLayout: string[] = [
 	'dueAmount',
 ];
 
-export const viewAllDataFields = convertToTableFields({ schema, fields: tableLayout });
+const viewAllDataFields = convertToTableFields({ schema, fields: tableLayout });
 
 const viewAll: any = {
 	title: 'My Orders',
