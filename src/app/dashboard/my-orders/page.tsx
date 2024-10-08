@@ -1,9 +1,7 @@
 'use client';
 
 import { Column, convertToTableFields } from '@/components';
-import useCustomToast from '@/components/hooks/useCustomToast';
 import { Table } from '@/components/table';
-import { useGetSelfQuery, useUpdateSelfMutation } from '@/store/services/authApi';
 import { Heading, Flex } from '@chakra-ui/react';
 import React from 'react';
 
@@ -105,31 +103,11 @@ const viewAll: any = {
 	clickable: true,
 	toPath: '/invoice',
 	export: true,
-	// select: {
-	// 	show: true,
-	// 	menu: multiSelectMenu,
-	// },
-	// button: {
-	// 	title: 'Add Product',
-	// 	path: '/products/create',
-	// },
-	// menu: itemMenu,
+
 	data: viewAllDataFields,
 };
 
 const OrderCard = () => {
-	const { data, isFetching } = useGetSelfQuery({});
-
-	const [trigger, result] = useUpdateSelfMutation();
-
-	const handleSubmit = (e: any) => {
-		e.preventDefault();
-	};
-
-	useCustomToast({
-		...result,
-	});
-
 	return (
 		<Flex
 			p={4}
