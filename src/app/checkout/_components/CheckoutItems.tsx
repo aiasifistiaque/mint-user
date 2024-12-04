@@ -1,10 +1,19 @@
 import React from 'react';
 
-import { Align, CartItemProps, Column, SpaceBetween, currency, useAppSelector } from '@/components';
+import {
+	Align,
+	CartItemProps,
+	Column,
+	SpaceBetween,
+	currency,
+	useAppSelector,
+	useColors,
+} from '@/components';
 import { Button, Grid, Heading, Image, Input, Radio } from '@chakra-ui/react';
 
 const CheckoutItems = () => {
 	const { cartItems, subTotal } = useAppSelector(state => state.cart);
+	const { brand, brandText } = useColors();
 
 	return (
 		<Column gap={4}>
@@ -69,7 +78,12 @@ const CheckoutItems = () => {
 					placeholder='Apply Coupon Code'
 					size='sm'
 				/>
-				<Button size='sm'>Apply</Button>
+				<Button
+					color={brandText}
+					bg={brand}
+					size='sm'>
+					Apply
+				</Button>
 			</SpaceBetween>
 			<SpaceBetween
 				borderTop='1px dashed'

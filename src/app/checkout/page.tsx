@@ -1,5 +1,5 @@
 'use client';
-import { Column, Layout, useAppDispatch, useAppSelector } from '@/components';
+import { Column, Layout, useAppDispatch, useAppSelector, useColors } from '@/components';
 import VInput from '@/components/buttons/primary/VInput';
 import VTextarea from '@/components/buttons/primary/VTextArea';
 import { useGetSelfQuery } from '@/store/services/authApi';
@@ -27,6 +27,7 @@ const CheckoutPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { data, isLoading } = useGetSelfQuery({});
+	const { brand, brandText } = useColors();
 
 	const onChange = (e: React.ChangeEvent<any>) => {
 		setAddress({
@@ -148,10 +149,10 @@ const CheckoutPage = () => {
 				<Column>
 					<CheckoutItems />
 					<Button
-						bg='#202020'
-						border='1px solid #202020'
-						color='white'
-						_hover={{ bg: 'white', color: '#202020' }}
+						bg={brand}
+						border={`1px solid ${brand}`}
+						color={brandText}
+						_hover={{ bg: brandText, color: brand }}
 						isLoading={result.isLoading}
 						isDisabled={isDisabled}
 						onClick={onSubmit}>
