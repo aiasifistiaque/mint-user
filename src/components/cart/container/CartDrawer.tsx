@@ -29,6 +29,7 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 	const { cartItems, subTotal } = useAppSelector(state => state.cart);
 
 	const colors = useColors();
+	const { brand, brandText } = useColors();
 
 	return (
 		<>
@@ -73,7 +74,8 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 							{isLoggedIn ? (
 								<Link href='/checkout'>
 									<Button
-										bg='eblack.200'
+										bg={brand}
+										color={brandText}
 										borderRadius='lg'
 										w='full'>
 										Checkout
@@ -82,7 +84,8 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 							) : (
 								<LoginModal>
 									<Button
-										bg='eblack.200'
+										bg={brand}
+										color={brandText}
 										borderRadius='lg'
 										w='full'>
 										Log In to Checkout

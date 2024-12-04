@@ -1,18 +1,22 @@
+'use client';
+
 import React, { FC } from 'react';
 import { Button } from '@chakra-ui/react';
 import { ButtonChild } from '../..';
+import { useColors } from '@/components';
 
 const PrimaryButton: FC<ButtonChild> = ({ children, ...props }) => {
+	const { brand, brandText } = useColors();
 	return (
 		<Button
-			bg='eblack.200'
-			borderColor='eblack.200'
+			bg={brand}
+			borderColor={brand}
+			color={brandText}
 			borderWidth={1}
-			_dark={{ color: 'eblack.200', bg: 'white' }}
+			// _dark={{ color: 'eblack.200', bg: 'white' }}
 			_hover={{
-				bg: 'white',
-				color: 'eblack.200',
-				_dark: { color: 'eblack.200' },
+				bg: brandText,
+				color: brand,
 			}}
 			{...props}>
 			{children}

@@ -44,25 +44,26 @@ const bannerIcons = [
 
 const BannerIcon = ({ name, href }: { name: string; href: string }) => {
 	const IconComponent = icons[name] || IoLogoInstagram;
+	const { brandText } = useColors();
 	return (
 		<Link
 			href={href}
 			isExternal>
 			<IconComponent
 				size={20}
-				color='white'
+				color={brandText}
 			/>
 		</Link>
 	);
 };
 
 const Banner = () => {
-	const { darkBg } = useColors();
+	const { darkBg, brand, brandText } = useColors();
 	return (
 		<Grid
 			gridTemplateColumns={{ base: '1fr', md: '1fr 1fr 1fr' }}
 			px={padding.LAYOUT_X}
-			bg={darkBg}
+			bg={brand}
 			h={{ base: sizes.BANNER_HEIGHT_BASE, md: sizes.BANNER_HEIGHT }}>
 			<Flex
 				align='center'
@@ -82,7 +83,7 @@ const Banner = () => {
 				<Text
 					textAlign='center'
 					letterSpacing='2px'
-					color='white'
+					color={brandText}
 					fontSize='.8rem'>
 					Free Shipping from Tk.2000
 				</Text>
@@ -93,7 +94,7 @@ const Banner = () => {
 					textAlign='right'
 					display={{ base: 'none', md: 'flex' }}
 					letterSpacing='2px'
-					color='white'
+					color={brandText}
 					fontSize='.8rem'>
 					Call Us: +880 1828 398 225
 				</Text>

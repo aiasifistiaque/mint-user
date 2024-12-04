@@ -18,6 +18,7 @@ type ItemProps = { name: string; href: string };
 const Header = () => {
 	const { data, isLoading } = useGetStoreQuery({});
 	const { cartItems } = useAppSelector(state => state.cart);
+
 	const cartCount = () => {
 		return cartItems.reduce((acc: any, item: any) => acc + item.qty, 0);
 	};
@@ -55,9 +56,9 @@ const Header = () => {
 					<HeaderIcon name='cart' />
 					<Center
 						ml={-2}
-						color='white'
+						color={data?.basic?.brandTextColor}
 						borderRadius='full'
-						bg='black'
+						bg={data?.basic?.brandColor}
 						h={4}
 						fontSize='12px'
 						w={4}>

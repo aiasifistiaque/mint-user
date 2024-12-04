@@ -50,6 +50,7 @@ export const mainApi = createApi({
 			const token = state.auth?.token;
 			if (token) {
 				headers.set('authorization', token);
+				headers.set('store', process.env.NEXT_PUBLIC_STORE || '0001');
 			}
 		},
 	}),

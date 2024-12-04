@@ -4,6 +4,7 @@ import React, { FC } from 'react';
 import { InputProps, FormControl, Stack, Text, Input } from '@chakra-ui/react';
 // import { Label, HelperText } from '../../';
 // import { Input } from './';
+import { useColors } from '@/components';
 
 type InputContainerProps = InputProps & {
 	label: string;
@@ -21,6 +22,7 @@ const VInput: FC<InputContainerProps> = ({
 	helper,
 	...props
 }) => {
+	const { brand } = useColors();
 	return (
 		<FormControl
 			isRequired={isRequired}
@@ -39,13 +41,13 @@ const VInput: FC<InputContainerProps> = ({
 					w='full'>
 					<Input
 						_focusActive={{
-							borderColor: 'black',
+							borderColor: brand,
 						}}
 						_focus={{
-							borderColor: 'black',
+							borderColor: brand,
 						}}
 						_active={{
-							borderColor: 'black',
+							borderColor: brand,
 						}}
 						outline='none'
 						borderRadius='md'

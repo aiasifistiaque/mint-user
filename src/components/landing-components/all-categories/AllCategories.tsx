@@ -78,7 +78,7 @@ type AllCategoriesProps = {
 };
 
 const AllCategories: FC<AllCategoriesProps> = ({ title, subTitle, btnText, items }) => {
-	const renderCategoryCards = items.map((item: CardItemProps, i: number) => (
+	const renderCategoryCards = items?.map((item: CardItemProps, i: number) => (
 		<CategoryCard
 			id={item?.id}
 			type={item?.type}

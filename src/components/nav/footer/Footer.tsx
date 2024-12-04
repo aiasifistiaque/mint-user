@@ -8,6 +8,7 @@ import {
 	FooterContainer,
 	FooterIconContainer,
 } from '.';
+import { useColors } from '@/components/hooks';
 
 const footerItems = [
 	{

@@ -9,6 +9,8 @@ type HeroProps = {
 	subTitle: string;
 	href?: string;
 	btnText: string;
+	titleColor?: string;
+	subTitleColor?: string;
 };
 
 const Hero: FC<HeroProps> = ({
@@ -17,13 +19,19 @@ const Hero: FC<HeroProps> = ({
 	subTitle,
 	//	href,
 	btnText,
+	titleColor,
+	subTitleColor,
 }) => {
 	return (
 		<Container src={image}>
 			<Overlay>
 				<ContentBox>
-					<Title lineHeight={1.2}>{title}</Title>
-					<SubHeading>{subTitle}</SubHeading>
+					<Title
+						color={titleColor}
+						lineHeight={1.2}>
+						{title}
+					</Title>
+					<SubHeading color={subTitleColor}>{subTitle}</SubHeading>
 					<Link href='/explore'>
 						<CTAButton>{btnText}</CTAButton>
 					</Link>
