@@ -27,7 +27,7 @@ const Title: FC<TextChild & { type?: TypeProps }> = ({ children, ...props }) => 
 	const colors = useColors();
 	return (
 		<Heading
-			fontFamily={colors?.primaryFont || 'Playfair Display'}
+			fontFamily={colors.primaryFont}
 			fontSize={{
 				base: FS_BASE[props.type || 'h1'],
 				md: FS_MD[props.type || 'h1'],

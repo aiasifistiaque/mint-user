@@ -1,4 +1,4 @@
-import { BgImage, Column, SubHeading, Title, Button, sizes, IconButton } from '../..';
+import { BgImage, Column, SubHeading, Title, Button, sizes, IconButton, useColors } from '../..';
 import React, { FC } from 'react';
 import { Grid, Text, Flex, Spacer } from '@chakra-ui/react';
 import { ArrowButton } from '../landing-products';
@@ -10,6 +10,7 @@ type ItemProps = {
 };
 
 const DiscoverItem: FC<ItemProps> = ({ image, title, subTitle }) => {
+	const colors = useColors();
 	return (
 		<BgImage
 			src={image}
@@ -22,10 +23,10 @@ const DiscoverItem: FC<ItemProps> = ({ image, title, subTitle }) => {
 				<Column gap={4}>
 					<Title
 						type='h5'
-						color='white'>
+						color={colors?.brandText}>
 						{title}
 					</Title>
-					<SubHeading color='white'>{subTitle}</SubHeading>
+					<SubHeading color={colors?.brandText}>{subTitle}</SubHeading>
 				</Column>
 				<Spacer />
 				<Flex justify='flex-end'>
@@ -34,14 +35,14 @@ const DiscoverItem: FC<ItemProps> = ({ image, title, subTitle }) => {
 						w='58px'
 						h='58px'
 						borderRadius='full'
-						bg='white'
-						borderColor='eblack.200'
+						bg={colors?.brandText}
+						borderColor={colors?.brand}
 						borderWidth={1}
 						iconColor='black'
 						_dark={{ iconColor: 'black' }}
 						_hover={{
-							bg: 'whitesmoke',
-							color: 'white',
+							bg: colors?.brandText,
+							color: colors?.brand,
 							_dark: { color: 'eblack.200' },
 						}}
 						iconSize={24}
