@@ -12,11 +12,14 @@ import { Button, Flex } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
 import { HeaderIcon } from './';
 import Link from 'next/link';
+import { useColors } from '@/components/hooks';
 
 const HeaderText: React.FC<{ children: string; href: string }> = ({ children, href }) => {
+	const colors = useColors();
 	return (
 		<Link href={href}>
 			<Flex
+				color={colors?.primaryText}
 				py={2}
 				fontWeight='500'>
 				{children}
@@ -28,6 +31,7 @@ const HeaderText: React.FC<{ children: string; href: string }> = ({ children, hr
 const MenuDrawer = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const btnRef = React.useRef();
+	const colors = useColors();
 
 	return (
 		<>
@@ -45,15 +49,13 @@ const MenuDrawer = () => {
 				placement='left'
 				onClose={onClose}>
 				<DrawerOverlay />
-				<DrawerContent bg='white'>
+				<DrawerContent bg={colors?.brandText}>
 					<DrawerCloseButton />
-					<DrawerHeader>Menu</DrawerHeader>
+					<DrawerHeader color={colors?.brand}>Menu</DrawerHeader>
 
 					<DrawerBody>
 						<HeaderText href='/'>Home</HeaderText>
-
 						<HeaderText href='/category'>Categories</HeaderText>
-
 						<HeaderText href='/explore'>Shop</HeaderText>
 					</DrawerBody>
 				</DrawerContent>

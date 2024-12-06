@@ -41,6 +41,7 @@ const useColors = (): ColorProps => {
 	const [headerBg, setHeaderBg] = React.useState<string>('white');
 	const [headerFg, setHeaderFg] = React.useState<string>('#222');
 	const [headerBorder, setHeaderBorder] = React.useState<string>('eborder.200');
+	const [bgColor, setBgColor] = React.useState<string>(bg);
 
 	//fonts
 	const [primaryFont, setPrimaryFont] = React.useState<string>('Playfair Display');
@@ -59,11 +60,12 @@ const useColors = (): ColorProps => {
 			setHeaderBorder(data?.basic?.headerBorder || 'eborder.200');
 			setPrimaryFont(data?.basic?.primaryFont || 'Playfair Display');
 			setSecondaryFont(data?.basic?.secondaryFont || 'Inter');
+			setBgColor(data?.basic?.bgColor || bg);
 		}
 	}, [isLoading, data]);
 
 	return {
-		bg,
+		bg: bgColor,
 		dark,
 		headerBg,
 		border,
@@ -73,8 +75,8 @@ const useColors = (): ColorProps => {
 		primaryText,
 		secondaryText,
 		headerFg,
-		footerBg: bg,
-		footerFg: primaryText,
+		footerBg: bgColor,
+		footerFg: brand,
 		bannerBg,
 		bannerFg,
 		headerBorder,
