@@ -27,7 +27,7 @@ const Logo: FC<FlexChild & { isLoading: boolean; logo: any }> = ({
 			<Image
 				w='160px'
 				h='auto'
-				maxH='64px'
+				maxH='50px'
 				objectFit='contain'
 				src={logo}
 			/>

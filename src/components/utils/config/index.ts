@@ -16,6 +16,8 @@ export const padding = {
 	LAYOUT_X: 4,
 	LAYOUT: 4,
 	BODY_TOP_BASE: `calc(${navbarHeightMobile} + ${bannerHeightMobile})`,
+	BODY_WITHOUT_BANNER_BASE: `calc(${navbarHeightMobile})`,
+	BODY_WITHOUT_BANNER_MD: `calc(${navbarHeight})`,
 	BODY_TOP_MD: `calc(${navbarHeight} + ${bannerHeight})`,
 };
 

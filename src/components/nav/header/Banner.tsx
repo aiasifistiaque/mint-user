@@ -1,4 +1,4 @@
-import { Align, padding, sizes, useColors } from '@/components';
+import { Align, padding, sizes, useColors, useContent } from '@/components';
 import { Flex, Grid, Text } from '@chakra-ui/react';
 import React from 'react';
 
@@ -44,26 +44,30 @@ const bannerIcons = [
 
 const BannerIcon = ({ name, href }: { name: string; href: string }) => {
 	const IconComponent = icons[name] || IoLogoInstagram;
-	const { brandText } = useColors();
+	const { brand, brandText, bannerFg, bannerBg } = useColors();
+
 	return (
 		<Link
 			href={href}
 			isExternal>
 			<IconComponent
 				size={20}
-				color={brandText}
+				color={bannerFg}
 			/>
 		</Link>
 	);
 };
 
 const Banner = () => {
-	const { darkBg, brand, brandText } = useColors();
+	const { brand, brandText, bannerFg, bannerBg } = useColors();
+	const { content } = useContent();
+
 	return (
 		<Grid
+			{...(content?.banner?.hide && { display: 'none' })}
 			gridTemplateColumns={{ base: '1fr', md: '1fr 1fr 1fr' }}
 			px={padding.LAYOUT_X}
-			bg={brand}
+			bg={bannerBg}
 			h={{ base: sizes.BANNER_HEIGHT_BASE, md: sizes.BANNER_HEIGHT }}>
 			<Flex
 				align='center'
@@ -83,9 +87,9 @@ const Banner = () => {
 				<Text
 					textAlign='center'
 					letterSpacing='2px'
-					color={brandText}
+					color={bannerFg}
 					fontSize='.8rem'>
-					Free Shipping from Tk.2000
+					{content?.banner?.centerText}
 				</Text>
 			</Align>
 
@@ -94,9 +98,9 @@ const Banner = () => {
 					textAlign='right'
 					display={{ base: 'none', md: 'flex' }}
 					letterSpacing='2px'
-					color={brandText}
+					color={bannerFg}
 					fontSize='.8rem'>
-					Call Us: +880 1828 398 225
+					{content?.banner?.rightText}
 				</Text>
 			</Align>
 		</Grid>

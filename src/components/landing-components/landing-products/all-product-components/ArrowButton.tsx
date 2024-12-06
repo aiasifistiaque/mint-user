@@ -2,13 +2,12 @@
 
 import React from 'react';
 import { IconButton, IconNameOptions } from '../../..';
-// import { IconButtonProps } from '@chakra-ui/react';
 import { useColors } from '@/components';
 
 const size = { base: '44px', md: '64px' };
 
 const ArrowButton = ({ name, onClick }: { name: IconNameOptions; onClick: () => void }) => {
-	const { brand } = useColors();
+	const { brand, brandText } = useColors();
 	return (
 		<IconButton
 			onClick={onClick}
@@ -20,12 +19,12 @@ const ArrowButton = ({ name, onClick }: { name: IconNameOptions; onClick: () => 
 			transition='all 0.3s ease'
 			borderColor={brand}
 			borderWidth={1}
-			iconColor='white'
+			iconColor={brandText}
 			_dark={{ iconColor: 'white' }}
 			_hover={{
 				iconColor: brand,
-				bg: 'white',
-				color: brand,
+				bg: brand,
+				color: brandText,
 				_dark: { color: brand },
 			}}
 			iconSize={32}

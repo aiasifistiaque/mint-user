@@ -1,7 +1,7 @@
 import { Center, Flex, FlexProps, Spinner } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { Header, Body, Footer, Banner } from '..';
-import { ColorMode } from '@/components';
+import { ColorMode, useColors } from '@/components';
 
 type LayoutProps = FlexProps & {
 	children: React.ReactNode;
@@ -9,8 +9,10 @@ type LayoutProps = FlexProps & {
 };
 
 const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
+	const { secondaryFont } = useColors();
 	return (
 		<Flex
+			fontFamily={secondaryFont}
 			flexDir='column'
 			minH='100vh'
 			w='100%'

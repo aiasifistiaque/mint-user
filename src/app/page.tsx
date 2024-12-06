@@ -63,11 +63,7 @@ const HomePage = () => {
 					<LandingSection>
 						<Discover {...data?.content?.discover} />
 					</LandingSection>
-					{/* {data?.content?.productList?.map((item: any, i: number) => (
-						<LandingSection key={i}>
-							<AllProducts data={ } />
-						</LandingSection>
-					))} */}
+
 					<ProductList data={data?.content?.productList || []} />
 
 					<LandingSection>

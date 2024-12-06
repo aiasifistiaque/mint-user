@@ -6,9 +6,10 @@ import { ButtonChild } from '../..';
 import { useColors } from '@/components';
 
 const PrimaryButton: FC<ButtonChild> = ({ children, ...props }) => {
-	const { brand, brandText } = useColors();
+	const { brand, brandText, secondaryFont } = useColors();
 	return (
 		<Button
+			fontFamily={secondaryFont}
 			bg={brand}
 			borderColor={brand}
 			color={brandText}

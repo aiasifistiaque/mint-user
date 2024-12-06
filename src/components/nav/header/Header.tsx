@@ -33,10 +33,6 @@ const Header = () => {
 				<HeaderText href='/explore'>Shop</HeaderText>
 			</HeaderSection>
 			<HeaderSection display={{ base: 'flex', md: 'none' }}>
-				{/* <HeaderIcon
-					name='menu'
-					href='#'
-				/> */}
 				<MenuDrawer />
 			</HeaderSection>
 			<Logo

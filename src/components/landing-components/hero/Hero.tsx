@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { Flex, Box } from '@chakra-ui/react';
+import { Flex, Box, FlexProps, BoxProps } from '@chakra-ui/react';
 import { BgImage, Column, FlexChild, PrimaryButton, SubHeading, Title } from '../..';
 import Link from 'next/link';
 
@@ -11,29 +11,37 @@ type HeroProps = {
 	btnText: string;
 	titleColor?: string;
 	subTitleColor?: string;
+	align?: 'center' | 'start' | 'end' | 'left' | 'right';
 };
 
 const Hero: FC<HeroProps> = ({
 	image,
 	title,
 	subTitle,
-	//	href,
+	align,
 	btnText,
 	titleColor,
 	subTitleColor,
 }) => {
 	return (
-		<Container src={image}>
+		<Container
+			src={image}
+			justify={align == 'center' ? 'center' : 'flex-start'}>
 			<Overlay>
-				<ContentBox>
+				<ContentBox {...(align == 'center' && { mx: 'auto' })}>
 					<Title
+						textAlign={align}
 						color={titleColor}
 						lineHeight={1.2}>
 						{title}
 					</Title>
-					<SubHeading color={subTitleColor}>{subTitle}</SubHeading>
+					<SubHeading
+						textAlign={align}
+						color={subTitleColor}>
+						{subTitle}
+					</SubHeading>
 					<Link href='/explore'>
-						<CTAButton>{btnText}</CTAButton>
+						<CTAButton {...(align == 'center' && { justify: 'center' })}>{btnText}</CTAButton>
 					</Link>
 				</ContentBox>
 			</Overlay>
@@ -41,27 +49,35 @@ const Hero: FC<HeroProps> = ({
 	);
 };
 
-const CTAButton = ({ children }: { children: ReactNode }) => (
-	<Box>
+const CTAButton = ({ children, ...props }: FlexProps & { children: ReactNode }) => (
+	<Flex
+		w='full'
+		{...props}>
 		<PrimaryButton size='lg'>{children || 'Shop Now'}</PrimaryButton>
-	</Box>
+	</Flex>
 );
 
-const ContentBox = ({ children }: { children: ReactNode }) => (
+const ContentBox = ({ children, ...props }: FlexProps & { children: ReactNode }) => (
 	<Column
 		justify='center'
 		gap={6}
 		px={{ base: '16px', md: '64px' }}
-		w={{ base: 'full', md: '60%' }}>
+		w={{ base: 'full', md: '60%' }}
+		{...props}>
 		{children}
 	</Column>
 );
 
-const Container: FC<{ src: string; children: ReactNode }> = ({ src, children }) => (
+const Container: FC<FlexProps & { src: string; children: ReactNode }> = ({
+	src,
+	children,
+	...props
+}) => (
 	<BgImage
 		h={{ base: '60vh', md: '80vh' }}
 		src={src}
-		borderRadius='2xl'>
+		borderRadius='2xl'
+		{...props}>
 		{children}
 	</BgImage>
 );

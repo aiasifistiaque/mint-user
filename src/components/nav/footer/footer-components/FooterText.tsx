@@ -1,15 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, use } from 'react';
 import { Link, Text } from '@chakra-ui/react';
+import { useColors } from '@/components/hooks';
 
 const FooterText: FC<{ children: string; href: string }> = ({ children, href }) => {
+	const colors = useColors();
 	return (
 		<Link href={href}>
 			<Text
 				fontSize='.9rem'
-				color='etext.400'
-				_hover={{
-					color: 'etext.600',
-				}}>
+				color={colors.footerFg}>
 				{children}
 			</Text>
 		</Link>

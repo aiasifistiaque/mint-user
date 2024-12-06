@@ -4,19 +4,19 @@ import { ButtonChild } from '../..';
 import { useColors } from '@/components';
 
 const SecondaryButton: FC<ButtonChild> = ({ children, ...props }) => {
-	const { brand } = useColors();
+	const { brand, brandText } = useColors();
 	return (
 		<Button
 			borderWidth={0.5}
-			bg='white'
+			bg={brandText}
 			borderColor={brand}
 			color={brand}
-			_dark={{ color: 'white', bg: brand, borderColor: 'white' }}
+			_dark={{ color: brandText, bg: brand, borderColor: brandText }}
 			_hover={{
-				borderColor: 'white',
+				borderColor: brandText,
 				bg: brand,
-				color: 'white',
-				_dark: { color: brand, bg: 'white', borderColor: brand },
+				color: brandText,
+				_dark: { color: brand, bg: brandText, borderColor: brand },
 			}}
 			{...props}>
 			{children}

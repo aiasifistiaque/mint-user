@@ -13,11 +13,17 @@ import { Button, Grid, Heading, Image, Input, Radio } from '@chakra-ui/react';
 
 const CheckoutItems = () => {
 	const { cartItems, subTotal } = useAppSelector(state => state.cart);
-	const { brand, brandText } = useColors();
+	const { brand, brandText, primaryText, secondaryText } = useColors();
 
 	return (
-		<Column gap={4}>
-			<Heading size='lg'>Order Summary</Heading>
+		<Column
+			gap={4}
+			color={primaryText}>
+			<Heading
+				size='lg'
+				color={primaryText}>
+				Order Summary
+			</Heading>
 			<Grid
 				gridTemplateColumns='2fr 1fr 1fr'
 				borderBottom='1px dashed'
@@ -38,33 +44,42 @@ const CheckoutItems = () => {
 							w='64px'
 							objectFit='cover'
 						/>
-						<Heading size='sm'>{item.name}</Heading>
+						<Heading
+							size='sm'
+							color={primaryText}>
+							{item.name}
+						</Heading>
 					</Align>
 					<Align>
-						<Heading size='sm'>
+						<Heading
+							size='sm'
+							color={secondaryText}>
 							{currency?.symbol} {item.price.toLocaleString()} x {item.qty}
 						</Heading>
 					</Align>
 					<Align>
-						<Heading size='sm'>
+						<Heading
+							size='sm'
+							color={secondaryText}>
 							{currency?.symbol} {(item.price * item.qty).toLocaleString()}
 						</Heading>
 					</Align>
 				</Grid>
 			))}
 			<SpaceBetween
+				color={primaryText}
 				borderTop='1px dashed'
 				pt={4}>
 				<Heading size='sm'>Shipping</Heading>
 				<Heading size='sm'>{currency?.symbol} 0.00</Heading>
 			</SpaceBetween>
-			<SpaceBetween>
+			<SpaceBetween color={primaryText}>
 				<Heading size='sm'>Subtotal</Heading>
 				<Heading size='sm'>
 					{currency?.symbol} {subTotal.toLocaleString()}
 				</Heading>
 			</SpaceBetween>
-			<Column>
+			<Column color={primaryText}>
 				<Heading size='sm'>Payment Method</Heading>
 
 				<Align gap={4}>
@@ -86,6 +101,7 @@ const CheckoutItems = () => {
 				</Button>
 			</SpaceBetween>
 			<SpaceBetween
+				color={primaryText}
 				borderTop='1px dashed'
 				pt={4}>
 				<Heading size='sm'>Total</Heading>

@@ -90,6 +90,8 @@ const CheckoutPage = () => {
 		successTitle: 'Success',
 	});
 
+	const colors = useColors();
+
 	return (
 		<Layout>
 			<Grid
@@ -97,7 +99,11 @@ const CheckoutPage = () => {
 				gridTemplateColumns={{ base: '1fr', md: '3fr 2fr' }}
 				p={{ base: 4, md: 6 }}>
 				<Column gap={4}>
-					<Heading size='lg'>Address</Heading>
+					<Heading
+						size='lg'
+						color={colors?.primaryText}>
+						Address
+					</Heading>
 					<Column gap={4}>
 						<VInput
 							name='name'

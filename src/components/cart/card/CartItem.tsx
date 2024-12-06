@@ -2,10 +2,11 @@ import { Box, Button, ButtonGroup, Flex, Heading, Image, Text } from '@chakra-ui
 import { addToCart, deleteOneFromCart, deleteSingleItemFromCart } from '@/store/slices/cartSlice';
 import React from 'react';
 import { CartItemProps } from '../';
-import { Column, currency, useAppDispatch } from '@/components';
+import { Column, currency, useAppDispatch, useColors } from '@/components';
 
 const CartItem = ({ image, id, name, price, qty }: CartItemProps) => {
 	const dispatch = useAppDispatch();
+	const colors = useColors();
 	const handleRemove = () => {
 		dispatch(deleteSingleItemFromCart(id));
 	};
@@ -40,8 +41,12 @@ const CartItem = ({ image, id, name, price, qty }: CartItemProps) => {
 				/>
 			</Box>
 			<Column>
-				<Heading size='sm'>{name}</Heading>
-				<Text>
+				<Heading
+					size='sm'
+					color={colors?.primaryText}>
+					{name}
+				</Heading>
+				<Text color={colors?.secondaryText}>
 					{currency?.symbol} {price.toLocaleString()}
 				</Text>
 

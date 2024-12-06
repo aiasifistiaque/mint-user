@@ -1,6 +1,8 @@
+'use client';
 import { TextChild } from '../..';
 import React, { FC } from 'react';
 import { Heading } from '@chakra-ui/react';
+import { useColors } from '@/components/hooks';
 
 type TypeProps = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -22,14 +24,15 @@ const FS_MD = {
 };
 
 const Title: FC<TextChild & { type?: TypeProps }> = ({ children, ...props }) => {
+	const colors = useColors();
 	return (
 		<Heading
-			fontFamily='Playfair Display'
+			fontFamily={colors?.primaryFont || 'Playfair Display'}
 			fontSize={{
 				base: FS_BASE[props.type || 'h1'],
 				md: FS_MD[props.type || 'h1'],
 			}}
-			color='etext.600'
+			color={colors.primaryText}
 			{...props}>
 			{children}
 		</Heading>

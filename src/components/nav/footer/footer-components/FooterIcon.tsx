@@ -1,3 +1,4 @@
+import { useColors } from '@/components/hooks';
 import { Link } from '@chakra-ui/react';
 import React from 'react';
 import { IoLogoInstagram } from 'react-icons/io5';
@@ -16,13 +17,14 @@ const icons: { [key: string]: React.ElementType } = {
 
 const FooterIcon = ({ name, href }: { name: string; href: string }) => {
 	const IconComponent = icons[name] || IoLogoInstagram;
+	const colors = useColors();
 	return (
 		<Link
 			href={href}
 			isExternal>
 			<IconComponent
 				size={22}
-				color='#676767'
+				color={colors.footerFg}
 			/>
 		</Link>
 	);

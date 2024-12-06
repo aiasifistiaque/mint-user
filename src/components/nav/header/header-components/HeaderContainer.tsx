@@ -8,15 +8,13 @@ const HeaderContainer: FC<GridChild> = ({ children, ...props }) => {
 		<Grid
 			zIndex='999'
 			bg={colors.headerBg}
-			// position='fixed'
-			// left={0}
-			// top={0}
+			position='sticky'
 			px={padding.LAYOUT_X}
 			alignItems='center'
 			w='100%'
 			gridTemplateColumns='1fr 1fr 1fr'
 			borderBottom='1px solid'
-			borderBottomColor={colors.border}
+			borderBottomColor={colors.headerBorder}
 			h={{ base: sizes.NAVBAR_HEIGHT_BASE, md: sizes.NAVBAR_HEIGHT }}
 			{...props}>
 			{children}

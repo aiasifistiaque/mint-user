@@ -48,7 +48,11 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 				<DrawerOverlay />
 				<DrawerContent bg={colors.bg}>
 					<DrawerCloseButton />
-					<DrawerHeader bg={colors.dark}>Shopping Cart</DrawerHeader>
+					<DrawerHeader
+						bg={colors.brandText}
+						color={colors?.primaryText}>
+						Shopping Cart
+					</DrawerHeader>
 
 					<DrawerBody>
 						<Column gap={4}>
@@ -61,7 +65,7 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 						</Column>
 					</DrawerBody>
 
-					<DrawerFooter bg='#e2e2e2'>
+					<DrawerFooter bg={colors?.brandText}>
 						<Column gap={4}>
 							<SpaceBetween
 								fontSize='1.2rem'
@@ -75,7 +79,12 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 								<Link href='/checkout'>
 									<Button
 										bg={brand}
+										border={`1px solid ${brand}`}
 										color={brandText}
+										_hover={{
+											bg: brandText,
+											color: brand,
+										}}
 										borderRadius='lg'
 										w='full'>
 										Checkout
@@ -86,6 +95,10 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
 									<Button
 										bg={brand}
 										color={brandText}
+										_hover={{
+											bg: brandText,
+											color: brand,
+										}}
 										borderRadius='lg'
 										w='full'>
 										Log In to Checkout
