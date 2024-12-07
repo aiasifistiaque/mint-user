@@ -35,9 +35,13 @@ const CheckoutItems = () => {
 
 			{cartItems.map((item: CartItemProps, i: number) => (
 				<Grid
+					gap={2}
 					gridTemplateColumns='2fr 1fr 1fr'
 					key={i}>
-					<Align gap={4}>
+					<Grid
+						gridTemplateColumns='1fr 3fr'
+						alignItems='center'
+						gap={4}>
 						<Image
 							src={item.image}
 							h='64px'
@@ -49,7 +53,7 @@ const CheckoutItems = () => {
 							color={primaryText}>
 							{item.name}
 						</Heading>
-					</Align>
+					</Grid>
 					<Align>
 						<Heading
 							size='sm'
@@ -82,10 +86,24 @@ const CheckoutItems = () => {
 			<Column color={primaryText}>
 				<Heading size='sm'>Payment Method</Heading>
 
-				<Align gap={4}>
-					<Radio isDisabled>Card</Radio>
-					<Radio isDisabled>Bkash</Radio>
-					<Radio isChecked>Cash On Delivery</Radio>
+				<Align
+					gap={4}
+					color={brand}>
+					<Radio
+						color={brand}
+						isDisabled>
+						Card
+					</Radio>
+					<Radio
+						color={brand}
+						isDisabled>
+						Bkash
+					</Radio>
+					<Radio
+						color={brand}
+						isChecked>
+						Cash On Delivery
+					</Radio>
 				</Align>
 			</Column>
 			<SpaceBetween>

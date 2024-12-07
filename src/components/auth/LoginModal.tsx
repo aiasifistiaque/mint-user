@@ -15,6 +15,7 @@ import {
 import { Column } from '../containers';
 import Login from './Login';
 import Register from './Register';
+import { useColors } from '../hooks';
 
 const LoginModal = ({
 	children,
@@ -27,6 +28,7 @@ const LoginModal = ({
 	const [type, setType] = useState<'login' | 'register'>(authType);
 
 	const title = type == 'login' ? 'Login' : 'Register';
+	const colors = useColors();
 
 	return (
 		<>
@@ -35,8 +37,11 @@ const LoginModal = ({
 				isOpen={isOpen}
 				onClose={onClose}>
 				<ModalOverlay />
-				<ModalContent bg='white'>
-					<ModalHeader>{title}</ModalHeader>
+				<ModalContent
+					bg={colors?.bg}
+					borderRadius='xl'
+					color={colors?.primaryText}>
+					<ModalHeader color={colors?.brand}>{title}</ModalHeader>
 					<ModalCloseButton />
 					{type == 'login' ? <Login /> : <Register />}
 					<ModalFooter>
@@ -45,6 +50,7 @@ const LoginModal = ({
 								<>
 									<Text textAlign='center'>Don't have an account?</Text>
 									<CButton
+										color={colors?.brand}
 										variant='link'
 										onClick={() => setType('register')}>
 										Sign Up
@@ -54,6 +60,7 @@ const LoginModal = ({
 								<>
 									<Text textAlign='center'>Aleady Registered?</Text>
 									<CButton
+										color={colors?.brand}
 										variant='link'
 										onClick={() => setType('login')}>
 										Log In

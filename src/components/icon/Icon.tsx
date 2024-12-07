@@ -45,6 +45,8 @@ import { IoSearchOutline } from 'react-icons/io5';
 // import { FaCartShopping } from 'react-icons/fa6';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { IoIosArrowRoundBack } from 'react-icons/io';
+import { LuSearch } from 'react-icons/lu';
+import { CiSearch } from 'react-icons/ci';
 
 export type IconNameOptions =
 	| 'add'
@@ -137,6 +139,8 @@ const icons: { [key in IconNameOptions]: FC<{ size: number; color: string }> } =
 	hamburger: IoReorderTwoOutline,
 	grid: IoGridOutline,
 	search: IoSearchOutline,
+	//search: LuSearch,
+	//search: CiSearch,
 	'arrow-right': IoIosArrowRoundForward,
 	'arrow-left': IoIosArrowRoundBack,
 };

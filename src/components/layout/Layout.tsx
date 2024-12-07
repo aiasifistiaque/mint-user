@@ -9,9 +9,10 @@ type LayoutProps = FlexProps & {
 };
 
 const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
-	const { secondaryFont } = useColors();
+	const { secondaryFont, bg } = useColors();
 	return (
 		<Flex
+			bg={bg}
 			fontFamily={secondaryFont}
 			flexDir='column'
 			minH='100vh'

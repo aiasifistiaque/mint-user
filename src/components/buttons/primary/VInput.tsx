@@ -40,6 +40,7 @@ const VInput: FC<InputContainerProps> = ({
 					spacing={1}
 					w='full'>
 					<Input
+						_focusBorderColor={brand}
 						_focusActive={{
 							borderColor: brand,
 						}}
@@ -47,6 +48,9 @@ const VInput: FC<InputContainerProps> = ({
 							borderColor: brand,
 						}}
 						_active={{
+							borderColor: brand,
+						}}
+						_outline={{
 							borderColor: brand,
 						}}
 						outline='none'
