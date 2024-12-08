@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { Flex, Box, FlexProps, BoxProps } from '@chakra-ui/react';
-import { BgImage, Column, FlexChild, PrimaryButton, SubHeading, Title } from '../..';
+import { BgImage, Column, FlexChild, PrimaryButton, SubHeading, Title, useContent } from '../..';
 import Link from 'next/link';
 
 type HeroProps = {
@@ -23,8 +23,10 @@ const Hero: FC<HeroProps> = ({
 	titleColor,
 	subTitleColor,
 }) => {
+	const { content } = useContent();
 	return (
 		<Container
+			borderRadius={content?.hero?.padding == 'apply' ? '2xl' : 'none'}
 			src={image}
 			justify={align == 'center' ? 'center' : 'flex-start'}>
 			<Overlay>

@@ -53,7 +53,7 @@ const HomePage = () => {
 	return (
 		<Layout>
 			<Column gap={8}>
-				<LandingSection>
+				<LandingSection applyPadding={data?.content?.hero?.padding || 'apply'}>
 					<Hero {...data?.content?.hero} />
 				</LandingSection>
 				<Column px={{ base: 0, md: 4 }}>

@@ -30,7 +30,7 @@ import {
 	currency,
 	useAppSelector,
 } from '@/components';
-import { useAppDispatch } from '../hooks';
+import { useAppDispatch, useColors } from '../hooks';
 import { applyFilters, clearFilters } from '@/store/slices/tableSlice';
 
 const stockOptions = [
@@ -91,6 +91,7 @@ const FilterModal = ({ onApply, onClear }: any) => {
 	});
 
 	const group = getRootProps();
+	const colors = useColors();
 
 	return (
 		<>
@@ -101,9 +102,10 @@ const FilterModal = ({ onApply, onClear }: any) => {
 				onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent
-					bg='white'
+					bg={colors?.bg}
 					borderRadius='20px'>
 					<ModalHeader
+						color={colors?.brand}
 						borderBottomWidth={1}
 						textAlign='center'
 						fontWeight='600'>
@@ -139,17 +141,17 @@ const FilterModal = ({ onApply, onClear }: any) => {
 									onChange={(e: any) => setRange(e)}
 									defaultValue={[10, 1000]}>
 									<RangeSliderTrack>
-										<RangeSliderFilledTrack bg='black' />
+										<RangeSliderFilledTrack bg={colors?.brand} />
 									</RangeSliderTrack>
 									<RangeSliderThumb
 										index={0}
 										boxSize={6}
-										borderColor='black'
+										borderColor={colors?.brand}
 									/>
 									<RangeSliderThumb
 										index={1}
 										boxSize={6}
-										borderColor='black'
+										borderColor={colors?.brand}
 									/>
 								</RangeSlider>
 								<SpaceBetween>

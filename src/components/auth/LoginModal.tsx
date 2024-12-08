@@ -39,7 +39,7 @@ const LoginModal = ({
 				<ModalOverlay />
 				<ModalContent
 					bg={colors?.bg}
-					borderRadius='xl'
+					borderRadius='20px'
 					color={colors?.primaryText}>
 					<ModalHeader color={colors?.brand}>{title}</ModalHeader>
 					<ModalCloseButton />
