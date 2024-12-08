@@ -13,8 +13,13 @@ const FooterTag: FC<FlexChild> = ({ children, ...props }) => {
 			bg={brand}
 			flex={1}
 			p={padding.LAYOUT_X}
+			py={2}
 			{...props}>
-			<Text color={brandText}>{children}</Text>
+			<Text
+				letterSpacing='2px'
+				color={brandText}>
+				{children}
+			</Text>
 		</Center>
 	);
 };

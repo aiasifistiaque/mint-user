@@ -32,6 +32,7 @@ const useCustomToast = ({
 				duration: 9000,
 				isClosable: true,
 				variant: 'left-accent',
+				position: 'top-right',
 			});
 	}, [isLoading]);
 
@@ -45,6 +46,7 @@ const useCustomToast = ({
 				duration: 9000,
 				isClosable: true,
 				variant: 'left-accent',
+				position: 'top-right',
 			});
 	}, [isLoading]);
 
