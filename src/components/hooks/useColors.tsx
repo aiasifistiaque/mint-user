@@ -21,6 +21,8 @@ export type ColorProps = {
 	headerBorder: string;
 	primaryFont: string;
 	secondaryFont: string;
+	footerBannerBg: string;
+	footerBannerFg: string;
 };
 
 const useColors = (): ColorProps => {
@@ -43,6 +45,12 @@ const useColors = (): ColorProps => {
 	const [headerBorder, setHeaderBorder] = React.useState<string>('eborder.200');
 	const [bgColor, setBgColor] = React.useState<string>(bg);
 
+	const [footerBg, setFooterBg] = React.useState<string>('#fff');
+	const [footerFg, setFooterFg] = React.useState<string>('#222');
+
+	const [footerBannerBg, setFooterBannerBg] = React.useState<string>('#f8f8f8');
+	const [footerBannerFg, setFooterBannerFg] = React.useState<string>('#000');
+
 	//fonts
 	const [primaryFont, setPrimaryFont] = React.useState<string>('Playfair Display');
 	const [secondaryFont, setSecondaryFont] = React.useState<string>('Inter');
@@ -52,7 +60,7 @@ const useColors = (): ColorProps => {
 			setBrand(data?.basic?.brandColor);
 			setBrandText(data?.basic?.brandTextColor);
 			setPrimaryText(data?.basic?.primaryTextColor);
-			setSecondaryText(data?.basic?.secondary);
+			setSecondaryText(data?.basic?.secondaryTextColor);
 			setBannerBg(data?.content?.banner?.bgColor || data?.basic?.brandColor);
 			setBannerFg(data?.content?.banner?.fgColor || data?.basic?.brandTextColor);
 			setHeaderBg(data?.basic?.headerBg || data?.basic?.brandColor);
@@ -61,6 +69,10 @@ const useColors = (): ColorProps => {
 			setPrimaryFont(data?.basic?.primaryFont || 'Playfair Display');
 			setSecondaryFont(data?.basic?.secondaryFont || 'Inter');
 			setBgColor(data?.basic?.bgColor || bg);
+			setFooterBg(data?.basic?.footerBg || '#fff');
+			setFooterFg(data?.basic?.footerFg || '#222');
+			setFooterBannerBg(data?.content?.footerBannerBg || data?.basic?.footerBg || '#f8f8f8');
+			setFooterBannerFg(data?.content?.footerBannerFg || data?.basic?.footerFg || '#000');
 		}
 	}, [isLoading, data]);
 
@@ -73,15 +85,17 @@ const useColors = (): ColorProps => {
 		brand,
 		brandText,
 		primaryText,
-		secondaryText,
+		secondaryText: secondaryText,
 		headerFg,
-		footerBg: bgColor,
-		footerFg: brand,
+		footerBg,
+		footerFg,
 		bannerBg,
 		bannerFg,
 		headerBorder,
 		primaryFont,
 		secondaryFont,
+		footerBannerBg,
+		footerBannerFg,
 	};
 };
 

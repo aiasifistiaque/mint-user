@@ -40,7 +40,11 @@ export default function SearchDrawer({ children }: { children: React.ReactNode }
 
 	return (
 		<>
-			<Flex onClick={onOpen}>{children}</Flex>
+			<Flex
+				onClick={onOpen}
+				cursor='pointer'>
+				{children}
+			</Flex>
 			<Drawer
 				isOpen={isOpen}
 				placement='top'
