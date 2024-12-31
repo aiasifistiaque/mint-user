@@ -48,7 +48,7 @@ export const mainApi = createApi({
 			const state = getState() as RootState;
 
 			const token = state.auth?.token;
-			headers.set('store', process.env.NEXT_PUBLIC_STORE || '0001');
+			headers.set('store', process.env.NEXT_PUBLIC_STORE || 'null');
 			if (token) {
 				headers.set('authorization', token);
 			}
