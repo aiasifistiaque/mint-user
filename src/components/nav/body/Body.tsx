@@ -7,10 +7,10 @@ const Body: FC<FlexChild> = ({ children, ...props }) => {
 	return (
 		<Column
 			bg={colors?.bg}
-			pt={{
-				base: content?.banner?.hide ? padding.BODY_WITHOUT_BANNER_BASE : padding.BODY_TOP_BASE,
-				md: content?.banner?.hide ? padding.BODY_WITHOUT_BANNER_MD : padding.BODY_TOP_MD,
-			}}
+			// pt={{
+			// 	base: content?.banner?.hide ? padding.BODY_WITHOUT_BANNER_BASE : padding.BODY_TOP_BASE,
+			// 	md: content?.banner?.hide ? padding.BODY_WITHOUT_BANNER_MD : padding.BODY_TOP_MD,
+			// }}
 			minH={sizes.BODY_MIN_HEIGHT}
 			{...props}>
 			{children}

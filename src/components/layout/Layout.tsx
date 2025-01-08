@@ -1,7 +1,8 @@
-import { Center, Flex, FlexProps, Spinner } from '@chakra-ui/react';
+import { Center, Flex, FlexProps, Spinner, Text } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { Header, Body, Footer, Banner } from '..';
 import { ColorMode, useColors } from '@/components';
+import { useScroll } from 'framer-motion';
 
 type LayoutProps = FlexProps & {
 	children: React.ReactNode;
@@ -10,27 +11,13 @@ type LayoutProps = FlexProps & {
 
 const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
 	const { secondaryFont, bg } = useColors();
-	return (
-		<Flex
-			bg={bg}
-			fontFamily={secondaryFont}
-			flexDir='column'
-			minH='100vh'
-			w='100%'
-			flex={1}
-			{...props}>
-			<Flex
-				flexDir='column'
-				position='fixed'
-				top={0}
-				left={0}
-				zIndex='999'
-				w='full'>
-				<Banner />
-				<Header />
-			</Flex>
 
-			<Body>
+	return (
+		<>
+			<Banner />
+			<Header />
+
+			<Body minH={'80vh'}>
 				{isLoading ? (
 					<Center
 						w='full'
@@ -43,8 +30,7 @@ const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
 				)}
 			</Body>
 			<Footer />
-			{/* <ColorMode /> */}
-		</Flex>
+		</>
 	);
 };
 

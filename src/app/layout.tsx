@@ -1,17 +1,5 @@
 import type { Metadata } from 'next';
-import {
-	Inter,
-	Montserrat,
-	Playfair_Display,
-	Roboto_Mono,
-	Raleway,
-	Bebas_Neue,
-	Oswald,
-	Lato,
-	Poppins,
-	Nunito,
-	Open_Sans,
-} from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/components';
 import 'swiper/css';
@@ -33,7 +21,7 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='en'>
-			<body className={inter.className}>
+			<body style={{ maxHeight: '100vh' }}>
 				<Providers>{children}</Providers>
 			</body>
 		</html>

@@ -9,6 +9,8 @@ const HeaderContainer: FC<GridChild> = ({ children, ...props }) => {
 			zIndex='999'
 			bg={colors.headerBg}
 			position='sticky'
+			left={0}
+			top={0}
 			px={padding.LAYOUT_X}
 			alignItems='center'
 			w='100%'

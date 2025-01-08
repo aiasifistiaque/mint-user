@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { Flex, Box, FlexProps, BoxProps } from '@chakra-ui/react';
+import { Flex, FlexProps } from '@chakra-ui/react';
 import { BgImage, Column, FlexChild, PrimaryButton, SubHeading, Title, useContent } from '../..';
 import Link from 'next/link';
 
