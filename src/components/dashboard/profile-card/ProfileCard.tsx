@@ -1,6 +1,6 @@
 'use client';
 
-import { Column, DashCard, handleString, useFormData, VInput } from '@/components';
+import { Column, DashCard, handleString, useColors, useFormData, VInput } from '@/components';
 import useCustomToast from '@/components/hooks/useCustomToast';
 import { useGetSelfQuery, useUpdateSelfMutation } from '@/store/services/authApi';
 import { Button, Box } from '@chakra-ui/react';
@@ -46,6 +46,8 @@ const ProfileCard = () => {
 		...result,
 	});
 
+	const colors = useColors();
+
 	return (
 		<DashCard title='Profile'>
 			<Column gap={4}>
@@ -66,7 +68,7 @@ const ProfileCard = () => {
 					<Button
 						onClick={handleSubmit}
 						isLoading={result.isLoading}
-						bg='black'>
+						bg={colors?.brand}>
 						Update Info
 					</Button>
 				</Box>

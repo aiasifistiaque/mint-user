@@ -76,6 +76,7 @@ const ProductCard: FC<ProductCardProps> = ({
 				</Text>
 				<Title type='h6'>{name}</Title>
 				<SubHeading
+					noOfLines={3}
 					fontSize='1.1rem'
 					fontWeight='600'
 					textTransform='uppercase'>

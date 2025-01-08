@@ -1,6 +1,6 @@
 'use client';
 
-import { Column, DashCard, handleString, useFormData, VInput } from '@/components';
+import { Column, DashCard, handleString, useColors, useFormData, VInput } from '@/components';
 import useCustomToast from '@/components/hooks/useCustomToast';
 import { useUpdateSelfMutation } from '@/store/services/authApi';
 import { Button, Box } from '@chakra-ui/react';
@@ -33,6 +33,7 @@ const dataModel = [
 const UpdatePasswordCard = () => {
 	const [formData, setFormData] = useFormData<any>(dataModel);
 	const [changedData, setChangedData] = React.useState<any>(null);
+	const colors = useColors();
 	const handleChange = (e: any) => {
 		handleString({ e, formData, setFormData, setChangedData });
 	};
@@ -70,7 +71,7 @@ const UpdatePasswordCard = () => {
 						<Button
 							type='submit'
 							isLoading={result.isLoading}
-							bg='black'>
+							bg={colors?.brand}>
 							Update Password
 						</Button>
 					</Box>
