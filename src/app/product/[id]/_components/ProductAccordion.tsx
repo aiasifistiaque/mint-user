@@ -27,7 +27,7 @@ const ProductAccordion = ({ description }: { description: string }) => {
 				</AccordionPanel>
 			</AccordionItem>
 
-			<AccordionItem>
+			{/* <AccordionItem>
 				<h2>
 					<AccordionButton color={colors?.primaryText}>
 						<AccordionTitle>Section 2 title</AccordionTitle>
@@ -56,7 +56,7 @@ const ProductAccordion = ({ description }: { description: string }) => {
 					ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
 					ullamco laboris nisi ut aliquip ex ea commodo consequat.
 				</AccordionPanel>
-			</AccordionItem>
+			</AccordionItem> */}
 		</Accordion>
 	);
 };

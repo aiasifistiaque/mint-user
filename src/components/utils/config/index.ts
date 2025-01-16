@@ -1,6 +1,5 @@
 //
 
-import { nav } from 'framer-motion/client';
 import { productSwiperBreakpoints } from './swiper/breakpoints';
 
 const navbarHeight = '80px';
@@ -12,6 +11,8 @@ const bannerHeightMobile = '36px';
 export const PLACEHOLDER_IMAGE =
 	process.env.NEXT_PUBLIC_PLACEHOLDER_IMAGE ||
 	'https://images.pexels.com/photos/104842/bmw-vehicle-ride-bike-104842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
+
+	export const PLACEHOLDER_IMAGE_2 =	"https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
 
 export const padding = {
 	LAYOUT_X: 4,

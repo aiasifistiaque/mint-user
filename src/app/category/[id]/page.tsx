@@ -70,6 +70,7 @@ const CategoryPage = () => {
 
 			<Grid
 				pb={32}
+				
 				gap={4}
 				gridTemplateColumns={{
 					base: '1fr',
@@ -99,6 +100,7 @@ const CategoryPage = () => {
 const TopGrid = ({ children }: { children: ReactNode }) => (
 	<Grid
 		pb={16}
+		
 		borderBottom='1px solid'
 		borderBottomColor='eborder.600'
 		gap={8}
