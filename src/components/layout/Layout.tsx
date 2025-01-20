@@ -10,8 +10,6 @@ type LayoutProps = FlexProps & {
 };
 
 const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
-	const { secondaryFont, bg } = useColors();
-
 	return (
 		<>
 			<Banner />
@@ -28,8 +26,8 @@ const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
 				) : (
 					children
 				)}
+				<Footer />
 			</Body>
-			<Footer />
 		</>
 	);
 };
