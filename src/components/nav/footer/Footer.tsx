@@ -17,7 +17,7 @@ const footerItems = [
 	},
 	{
 		name: 'FAQs',
-		href: '#',
+		href: '/faq',
 	},
 	{
 		name: 'Contact Us',

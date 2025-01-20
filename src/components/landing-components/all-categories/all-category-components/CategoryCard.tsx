@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FC } from 'react';
-import { Column, SubHeading, Title, sizes, useGetItemNameById, PLACEHOLDER_IMAGE } from '../../..';
+import { Column, SubHeading, Title, sizes, useGetItemNameById, PLACEHOLDER_IMAGE_2 } from '../../..';
 import { Image } from '@chakra-ui/react';
 import { useGetAllQuery } from '@/store/services/commonApi';
 import Link from 'next/link';
@@ -29,7 +29,7 @@ const CategoryCard: FC<{ id: string; type: string }> = ({ id, type }) => {
 				w='full'
 				gap={4}>
 				<Image
-					src={image || PLACEHOLDER_IMAGE}
+					src={image || PLACEHOLDER_IMAGE_2}
 					alt='name'
 					objectFit='cover'
 					width={IMAGE_SIZE}
