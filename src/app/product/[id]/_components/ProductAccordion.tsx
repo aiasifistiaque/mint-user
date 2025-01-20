@@ -1,33 +1,31 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 import {
-	Accordion,
-	AccordionButton,
-	AccordionIcon,
-	AccordionItem,
-	AccordionPanel,
-	Box,
-} from '@chakra-ui/react';
-import { useColors } from '@/components';
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+} from "@chakra-ui/react";
+import { useColors } from "@/components";
 
 const ProductAccordion = ({ description }: { description: string }) => {
-	const colors = useColors();
-	return (
-		<Accordion>
-			<AccordionItem>
-				<h2>
-					<AccordionButton color={colors?.primaryText}>
-						<AccordionTitle>Description</AccordionTitle>
-						<AccordionIcon />
-					</AccordionButton>
-				</h2>
-				<AccordionPanel
-					pb={4}
-					color={colors?.secondaryText}>
-					{description}
-				</AccordionPanel>
-			</AccordionItem>
+  const colors = useColors();
+  return (
+    <Accordion defaultIndex={[0]} allowToggle>
+      <AccordionItem>
+        <h2>
+          <AccordionButton color={colors?.primaryText}>
+            <AccordionTitle>Description</AccordionTitle>
+            <AccordionIcon />
+          </AccordionButton>
+        </h2>
+        <AccordionPanel pb={4} color={colors?.secondaryText}>
+          {description}
+        </AccordionPanel>
+      </AccordionItem>
 
-			{/* <AccordionItem>
+      {/* <AccordionItem>
 				<h2>
 					<AccordionButton color={colors?.primaryText}>
 						<AccordionTitle>Section 2 title</AccordionTitle>
@@ -57,20 +55,21 @@ const ProductAccordion = ({ description }: { description: string }) => {
 					ullamco laboris nisi ut aliquip ex ea commodo consequat.
 				</AccordionPanel>
 			</AccordionItem> */}
-		</Accordion>
-	);
+    </Accordion>
+  );
 };
 
 const AccordionTitle = ({ children }: { children: ReactNode }) => (
-	<Box
-		fontSize='1.4rem'
-		fontWeight='600'
-		fontFamily='Playfair Display'
-		as='span'
-		flex='1'
-		textAlign='left'>
-		{children}
-	</Box>
+  <Box
+    fontSize="1.4rem"
+    fontWeight="600"
+    fontFamily="Playfair Display"
+    as="span"
+    flex="1"
+    textAlign="left"
+  >
+    {children}
+  </Box>
 );
 
 export default ProductAccordion;
