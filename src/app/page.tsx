@@ -46,7 +46,7 @@ const HomePage = () => {
 			<Center
 				flex={1}
 				h='100vh'>
-				<Spinner size='lg' />
+				<Spinner size='xl' />
 			</Center>
 		);
 

@@ -32,32 +32,29 @@ const Hero: FC<HeroProps> = ({
 			<Overlay>
 				<ContentBox {...(align == 'center' && { mx: 'auto' })}>
 					<Title
-						textAlign={align}
-						color={titleColor}
-						lineHeight={1.2}>
-						{title}
+						// color={titleColor}
+						// lineHeight={1.2}
+						{...content?.hero?.headingCss}
+						textAlign={align}>
+						{content?.hero?.headingContent || 'Enter your title here'}
 					</Title>
 					<SubHeading
-						textAlign={align}
-						color={subTitleColor}>
-						{subTitle}
+						{...content?.hero?.subHeadingCss}
+						textAlign={align}>
+						{content?.hero?.subHeadingContent || 'Enter Subtitle Here'}
 					</SubHeading>
 					<Link href='/explore'>
-						<CTAButton {...(align == 'center' && { justify: 'center' })}>{btnText}</CTAButton>
+						<Flex
+							w='full'
+							{...(align == 'center' && { justify: 'center' })}>
+							<PrimaryButton {...content?.hero?.button} />
+						</Flex>
 					</Link>
 				</ContentBox>
 			</Overlay>
 		</Container>
 	);
 };
-
-const CTAButton = ({ children, ...props }: FlexProps & { children: ReactNode }) => (
-	<Flex
-		w='full'
-		{...props}>
-		<PrimaryButton size='lg'>{children || 'Shop Now'}</PrimaryButton>
-	</Flex>
-);
 
 const ContentBox = ({ children, ...props }: FlexProps & { children: ReactNode }) => (
 	<Column
