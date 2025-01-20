@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   FooterItemContainer,
   FooterIcon,
@@ -9,6 +8,7 @@ import {
   FooterIconContainer,
 } from ".";
 import { useColors } from "@/components/hooks";
+import { useGetStoreQuery } from "@/store/services/storeApi";
 
 const footerItems = [
   {
@@ -49,6 +49,13 @@ const footerIcons = [
 ];
 
 const Footer = () => {
+  const { data } = useGetStoreQuery({});
+  
+  // Filter footerIcons based on the presence of keys in data?.socials
+  const filteredIcons = footerIcons.filter(
+    (icon) => data?.socials && data.socials[icon.name]
+  );
+
   return (
     <FooterContainer>
       <FooterItemContainer>
@@ -59,8 +66,12 @@ const Footer = () => {
         ))}
       </FooterItemContainer>
       <FooterIconContainer>
-        {footerIcons.map((icon, idx) => (
-          <FooterIcon key={idx} {...icon} />
+        {filteredIcons.map((icon, idx) => (
+          <FooterIcon
+            key={idx}
+            name={icon.name}
+            href={data?.socials[icon.name]} // Use the dynamic href
+          />
         ))}
       </FooterIconContainer>
       <FooterTag>Copyright © 2024, powered by thinkcrypt.io</FooterTag>
