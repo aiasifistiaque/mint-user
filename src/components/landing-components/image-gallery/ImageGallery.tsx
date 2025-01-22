@@ -19,6 +19,7 @@ const ImageGallery: FC<ImageGalleryProps> = ({}) => {
           <SubHeading>Join Our 100,000+ Satisfied Customers</SubHeading>
         </Column>
       </TopContainer>
+      <ImageCardContainer />
       
     </Column>
   );

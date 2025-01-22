@@ -1,0 +1,38 @@
+.swiper {
+  width: 100%;
+  height: 600px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  /* background: #fff; */
+  transition: linear !important;
+
+  /* Make each slide independent */
+  position: relative;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Shift odd and even slides */
+.odd-slide img {
+  position: relative;
+  top: 30px; /* Shift odd images upwards */
+}
+
+.even-slide img {
+  position: relative;
+  top: 0px; /* Shift even images downwards */
+}
+
+/* Add transition for smooth effect */
+/* .swiper-slide img {
+  transition: top 0.1s ease-in-out;
+} */

@@ -10,3 +10,4 @@ export { default as ProductCard } from './landing-products/all-product-component
 export { default as ProductSkeleton } from './landing-products/all-product-components/ProductSkeleton';
 export { default as ProductPageTitle } from './landing-products/all-product-components/ProductPageTitle';
 export {default as ImageGallery} from './image-gallery/ImageGallery';
+export {default as HomeLayout} from './home-layout/HomeLayout';
