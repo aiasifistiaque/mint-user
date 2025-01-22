@@ -42,7 +42,7 @@ const CategoryPage = () => {
 		<Layout
 			p={{ base: 4, md: 6 }}
 			isLoading={catFetching}>
-			<Column gap={2}>
+			<Column gap={2} p={4}>
 				<SpaceBetween>
 					<Column>
 						<Title type='h3'>{catData?.name}</Title>
@@ -70,7 +70,7 @@ const CategoryPage = () => {
 
 			<Grid
 				pb={32}
-				
+				px={4}
 				gap={4}
 				gridTemplateColumns={{
 					base: '1fr',
