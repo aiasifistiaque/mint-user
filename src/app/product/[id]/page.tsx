@@ -17,15 +17,23 @@ export async function generateMetadata(
   const { id: productId } = await params;
 
   const productData = await getAProduct(productId);
+  const metaData = productData?.meta;
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: productData?.name,
-    description: productData?.description,
+    title: metaData?.title ? metaData?.title : productData?.name,
+    description: metaData?.description
+      ? metaData?.description
+      : productData?.description,
     openGraph: {
-      title: productData?.name,
-      description: productData?.description,
-      images: [productData?.image, ...previousImages],
+      title: metaData?.title ? metaData?.title : productData?.name,
+      description: metaData?.description
+        ? metaData?.description
+        : productData?.description,
+      images: [
+        productData?.metaImage ? productData?.metaImage : productData?.image,
+        ...previousImages,
+      ],
       type: "website",
       locale: "en-us",
       url: `${BASE_URL}`,
