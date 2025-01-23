@@ -51,6 +51,8 @@ const CheckoutPage = () => {
   const { data, isLoading } = useGetSelfQuery({});
   const { brand, brandText } = useColors();
 
+  console.log(data, "STORE DATA");
+
   const onChange = (e: React.ChangeEvent<any>) => {
     setAddress({
       ...address,

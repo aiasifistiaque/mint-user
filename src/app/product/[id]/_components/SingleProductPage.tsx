@@ -28,6 +28,8 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
     { skip: !id }
   );
 
+  console.log(data, "Data Products");
+
   const [qty, setQty] = useState(1);
   console.log(data?.description, "Description data");
 

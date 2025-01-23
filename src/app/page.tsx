@@ -18,16 +18,17 @@ export async function generateMetadata(
   const storeData = await getStore();
   const previousImages = (await parent).openGraph?.images || [];
 
+  const metaData = storeData?.shop?.meta;
   const basicStoreData = storeData?.basic;
   const shopData = storeData?.shop;
 
   return {
-    title: basicStoreData?.name,
-    description: shopData?.description,
+    title: metaData?.title ? metaData?.title : basicStoreData?.name,
+    description: metaData?.description ? metaData?.description : shopData?.description,
     openGraph: {
-      title: basicStoreData?.name,
-      description: shopData?.description,
-      images: [basicStoreData?.logo, ...previousImages],
+      title: metaData?.title ? metaData?.title : basicStoreData?.name,
+      description: metaData?.description ? metaData?.description : shopData?.description,
+      images: [metaData?.metaImage ? metaData?.metaImage : basicStoreData?.logo, ...previousImages],
       type: "website",
       locale: "en-us",
       url: `${BASE_URL}`,
