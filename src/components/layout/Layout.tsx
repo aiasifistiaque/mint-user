@@ -17,7 +17,7 @@ const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
       <Banner />
       <Header />
 
-      <Body minH={"80vh"} p={4}>
+      <Body minH={"80vh"}>
         {isLoading ? (
           <Center w="full" flex={1} h="100%">
             <Spinner />

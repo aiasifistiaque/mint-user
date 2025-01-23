@@ -1,3 +1,5 @@
+"use client";
+
 import { FlexChild } from "../..";
 import { Flex } from "@chakra-ui/react";
 import React, { FC } from "react";
@@ -9,8 +11,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { Pagination } from "swiper/modules";
-import ImageCard from "./ImageCard";
+import "./styles.css";
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { imageData } from "./imageData";
 
 const swiperBreakpoints = {
   100: {
@@ -26,37 +31,41 @@ const swiperBreakpoints = {
     slidesPerView: 3,
   },
   1024: {
-    slidesPerView: 5,
+    slidesPerView: 4,
   },
 };
 
-type ItemProps = {
-  id: string;
-  type: string;
-};
-
-const ImageCardContainer: FC<FlexChild & { data: ItemProps[] }> = ({
-  data,
-}) => {
+const ImageCardContainer: FC = ({}) => {
   return (
-    <Flex
-      py={8}
-      w="full"
-      as={Swiper}
-      pagination={{
-        clickable: true,
-      }}
-      scrollbar={{ draggable: true }}
-      modules={[Pagination]}
-      spaceBetween={20}
-      breakpoints={swiperBreakpoints}
-    >
-      {data.map((item: ItemProps, i: number) => (
-        <SwiperSlide key={i}>
-          <ImageCard />
-        </SwiperSlide>
-      ))}
-    </Flex>
+    <>
+      <Swiper
+        spaceBetween={30}
+        style={{ marginTop: "2rem" }}
+        loop={true} // Enables infinite looping
+        breakpoints={swiperBreakpoints}
+        autoplay={{
+          delay: 0, // No delay between transitions
+          disableOnInteraction: false,
+        }}
+        speed={6500}
+        freeMode={true}
+        // pagination={{
+        //   clickable: true,
+        // }}
+        //navigation={true}
+        modules={[Autoplay]}
+        className="mySwiper"
+      >
+        {imageData.map((image, index) => (
+          <SwiperSlide
+            key={image?.id}
+            className={index % 2 === 0 ? "even-slide" : "odd-slide"}
+          >
+            <img src={image.url} alt={`Slide ${image.id}`} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
   );
 };
 
