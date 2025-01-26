@@ -8,9 +8,15 @@ export const storeApi = mainApi.injectEndpoints({
 			query: () => ({
 				url: `/store`,
 			}),
+
 			// providesTags: (_result, _error, { path }) => [path],
 		}),
+		getAllStore: builder.query({
+			query: () => ({
+				url: `/store/hongo`,
+			}),
+		})
 	}),
 });
 
-export const { useGetStoreQuery } = storeApi;
+export const { useGetStoreQuery, useGetAllStoreQuery } = storeApi;

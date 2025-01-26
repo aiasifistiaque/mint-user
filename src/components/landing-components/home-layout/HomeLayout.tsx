@@ -1,26 +1,24 @@
-'use client';
+"use client";
 
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
 import {
-	Hero,
-	LandingSection,
-	Layout,
-	AllCategories,
-	Discover,
-	AllProducts,
-	Column,
-	About,
-	sortByPriority,
-	FeaturedCollections,
-	ImageGallery,
-} from '@/components';
-import { useGetStoreQuery } from '@/store/services/storeApi';
-import { Center, Spinner } from '@chakra-ui/react';
+  Hero,
+  LandingSection,
+  Layout,
+  AllCategories,
+  Discover,
+  AllProducts,
+  Column,
+  About,
+  sortByPriority,
+  FeaturedCollections,
+  ImageGallery,
+} from "@/components";
+import { useGetStoreQuery } from "@/store/services/storeApi";
+import { Center, Spinner } from "@chakra-ui/react";
 
-type HomeLayoutProps = {
-
-}
+type HomeLayoutProps = {};
 
 type ProductProp = {
   title: string;
@@ -47,45 +45,46 @@ const ProductList = ({ data }: { data: ProductProp[] }) => {
 const HomeLayout: FC<HomeLayoutProps> = ({}) => {
   const { data, isLoading } = useGetStoreQuery({});
 
-    if (isLoading)
-      return (
-        <Center
-          flex={1}
-          h='100vh'>
-          <Spinner size='xl' />
-        </Center>
-      );
+  const imageGalleryHide = true;
 
+  if (isLoading)
+    return (
+      <Center flex={1} h="100vh">
+        <Spinner size="xl" />
+      </Center>
+    );
 
   return (
     <Layout>
-			<Column gap={8}>
-				<LandingSection applyPadding={data?.content?.hero?.padding || 'apply'}>
-					<Hero {...data?.content?.hero} />
-				</LandingSection>
-				<Column px={{ base: 0, md: 4 }}>
-					<LandingSection>
-						<AllCategories {...data?.content?.collections} />
-					</LandingSection>
-					<LandingSection>
-						<Discover {...data?.content?.discover} />
-					</LandingSection>
+      <Column gap={8}>
+        <LandingSection applyPadding={data?.content?.hero?.padding || "apply"}>
+          <Hero {...data?.content?.hero} />
+        </LandingSection>
+        <Column px={{ base: 0, md: 4 }}>
+          <LandingSection>
+            <AllCategories {...data?.content?.collections} />
+          </LandingSection>
+          <LandingSection>
+            <Discover {...data?.content?.discover} />
+          </LandingSection>
 
-					<ProductList data={data?.content?.productList || []} />
+          <ProductList data={data?.content?.productList || []} />
 
-					<LandingSection>
-						<ImageGallery />
-					</LandingSection>
+          {!imageGalleryHide && (
+            <LandingSection>
+              <ImageGallery />
+            </LandingSection>
+          )}
 
-					<LandingSection>
-						<About {...data?.content?.about} />
-					</LandingSection>
-					<LandingSection>
-						<FeaturedCollections items={data?.content?.featuredCollection} />
-					</LandingSection>
-				</Column>
-			</Column>
-		</Layout>
+          <LandingSection>
+            <About {...data?.content?.about} />
+          </LandingSection>
+          <LandingSection>
+            <FeaturedCollections items={data?.content?.featuredCollection} />
+          </LandingSection>
+        </Column>
+      </Column>
+    </Layout>
   );
 };
 

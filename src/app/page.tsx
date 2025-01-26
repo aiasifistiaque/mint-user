@@ -24,11 +24,18 @@ export async function generateMetadata(
 
   return {
     title: metaData?.title ? metaData?.title : basicStoreData?.name,
-    description: metaData?.description ? metaData?.description : shopData?.description,
+    description: metaData?.description
+      ? metaData?.description
+      : shopData?.description,
     openGraph: {
       title: metaData?.title ? metaData?.title : basicStoreData?.name,
-      description: metaData?.description ? metaData?.description : shopData?.description,
-      images: [metaData?.metaImage ? metaData?.metaImage : basicStoreData?.logo, ...previousImages],
+      description: metaData?.description
+        ? metaData?.description
+        : shopData?.description,
+      images: [
+        metaData?.metaImage ? metaData?.metaImage : basicStoreData?.logo,
+        ...previousImages,
+      ],
       type: "website",
       locale: "en-us",
       url: `${BASE_URL}`,

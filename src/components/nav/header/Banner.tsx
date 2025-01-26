@@ -1,3 +1,5 @@
+"use client";
+
 import { Align, padding, sizes, useColors, useContent } from "@/components";
 import { Flex, Grid, Text } from "@chakra-ui/react";
 import React from "react";
@@ -9,7 +11,15 @@ import { IoLogoFacebook } from "react-icons/io5";
 import { IoLogoTwitter } from "react-icons/io5";
 import { IoLogoLinkedin } from "react-icons/io5";
 import { IoLogoYoutube } from "react-icons/io5";
-import { useGetStoreQuery } from "@/store/services/storeApi";
+import { GrLanguage } from "react-icons/gr";
+import { FaTiktok } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+import { FaTelegram } from "react-icons/fa6";
+
+import {
+  useGetAllStoreQuery,
+  useGetStoreQuery,
+} from "@/store/services/storeApi";
 
 const icons: { [key: string]: React.ElementType } = {
   instagram: IoLogoInstagram,
@@ -17,39 +27,15 @@ const icons: { [key: string]: React.ElementType } = {
   twitter: IoLogoTwitter,
   linkedin: IoLogoLinkedin,
   youtube: IoLogoYoutube,
+  website: GrLanguage,
+  tiktok: FaTiktok,
+  whatsapp: FaWhatsapp,
+  telegram: FaTelegram,
 };
-
-const bannerIcons = [
-  {
-    name: "instagram",
-    href: "https://www.instagram.com/",
-  },
-  {
-    name: "linkedin",
-    href: "https://www.linkedin.com/",
-  },
-  {
-    name: "facebook",
-    href: "https://www.facebook.com/",
-  },
-  {
-    name: "twitter",
-    href: "https://twitter.com/",
-  },
-
-  {
-    name: "youtube",
-    href: "https://www.youtube.com/",
-  },
-];
 
 const BannerIcon = ({ name, href }: { name: string; href: string }) => {
   const IconComponent = icons[name] || IoLogoInstagram;
-  const { brand, brandText, bannerFg, bannerBg } = useColors();
-
-  const { data } = useGetStoreQuery({});
-
-  console.log(data?.socials, "Socials Data:");
+  const { bannerFg } = useColors();
 
   return (
     <Link href={href} isExternal>
@@ -59,13 +45,28 @@ const BannerIcon = ({ name, href }: { name: string; href: string }) => {
 };
 
 const Banner = () => {
-  const { brand, brandText, bannerFg, bannerBg } = useColors();
+  const { bannerFg, bannerBg } = useColors();
   const { content } = useContent();
-  const { data } = useGetStoreQuery({});
+  const { data: shopData } = useGetAllStoreQuery({});
 
-  // Filter bannerIcons based on the presence of keys in data?.socials
-  const filteredIcons = bannerIcons.filter(
-    (icon) => data?.socials && data.socials[icon.name]
+  // Extract social media links from `shopData?.shop`
+  const socials = shopData?.shop
+    ? {
+        instagram: shopData.shop.instagram,
+        facebook: shopData.shop.facebook,
+        twitter: shopData.shop.twitter,
+        linkedin: shopData.shop.linkedin,
+        youtube: shopData.shop.youtube,
+        website: shopData.shop.website,
+        tiktok: shopData.shop.tiktok,
+        whatsapp: shopData.shop.whatsapp,
+        telegram: shopData.shop.telegram,
+      }
+    : {};
+
+  // Filter icons with valid links
+  const filteredIcons = Object.entries(socials).filter(
+    ([, value]) => value && value.trim() !== ""
   );
 
   return (
@@ -77,13 +78,9 @@ const Banner = () => {
       h={{ base: sizes.BANNER_HEIGHT_BASE, md: sizes.BANNER_HEIGHT }}
     >
       <Flex align="center" gap={4} display={{ base: "none", md: "flex" }}>
-        {/* Render only filtered icons */}
-        {filteredIcons.map((icon, idx) => (
-          <BannerIcon
-            key={idx}
-            name={icon.name}
-            href={data?.socials[icon.name]}
-          />
+        {/* Render filtered icons */}
+        {filteredIcons.map(([name, href], idx) => (
+          <BannerIcon key={idx} name={name} href={href} />
         ))}
       </Flex>
       <Align
