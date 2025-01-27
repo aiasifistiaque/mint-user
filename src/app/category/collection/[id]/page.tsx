@@ -18,14 +18,24 @@ export async function generateMetadata(
 
   const collectionData = await getACollection(collectionId);
   const previousImages = (await parent).openGraph?.images || [];
+  const metaData = collectionData?.meta;
 
   return {
-    title: collectionData?.name,
-    description: collectionData?.description,
+    title: metaData?.title ? metaData?.title : collectionData?.name,
+    description: metaData?.description
+      ? metaData?.description
+      : collectionData?.description,
     openGraph: {
-      title: collectionData?.name,
-      description: collectionData?.description,
-      images: [collectionData?.image, ...previousImages],
+      title: metaData?.title ? metaData?.title : collectionData?.name,
+      description: metaData?.description
+        ? metaData?.description
+        : collectionData?.description,
+      images: [
+        collectionData?.metaImage
+          ? collectionData?.metaImage
+          : collectionData?.image,
+        ...previousImages,
+      ],
       type: "website",
       locale: "en-us",
       url: `${BASE_URL}`,

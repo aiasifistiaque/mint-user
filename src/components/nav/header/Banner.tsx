@@ -1,8 +1,8 @@
 "use client";
 
+import React from "react";
 import { Align, padding, sizes, useColors, useContent } from "@/components";
 import { Flex, Grid, Text } from "@chakra-ui/react";
-import React from "react";
 
 import { Link } from "@chakra-ui/react";
 

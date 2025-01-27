@@ -18,14 +18,22 @@ export async function generateMetadata(
 
   const categoryData = await getACategory(categoryId);
   const previousImages = (await parent).openGraph?.images || [];
+  const metaData = categoryData?.meta;
 
   return {
-    title: categoryData?.name,
-    description: categoryData?.description,
+    title: metaData?.title ? metaData?.title : categoryData?.name,
+    description: metaData?.description
+      ? metaData?.description
+      : categoryData?.description,
     openGraph: {
-      title: categoryData?.name,
-      description: categoryData?.description,
-      images: [categoryData?.image, ...previousImages],
+      title: metaData?.title ? metaData?.title : categoryData?.name,
+      description: metaData?.description
+        ? metaData?.description
+        : categoryData?.description,
+      images: [
+        categoryData?.metaImage ? categoryData?.metaImage : categoryData?.image,
+        ...previousImages,
+      ],
       type: "website",
       locale: "en-us",
       url: `${BASE_URL}`,
