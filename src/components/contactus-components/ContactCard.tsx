@@ -1,6 +1,7 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { FC } from "react";
+import { SubHeading, Title } from "../text";
 
 type ContactCardProps = {
   title: string;
@@ -23,16 +24,16 @@ const ContactCard: FC<ContactCardProps> = ({
       p={4}
       align="center"
     >
-      <Heading as="h3" fontSize="lg" fontWeight="bold" mb={2}>
+      <Title as="h3" fontSize="lg" fontWeight="bold" mb={2}>
         {title}
-      </Heading>
-      <Text fontSize="md" color="gray.600" mb={4}>
+      </Title>
+      <SubHeading fontSize="md" color="gray.600" mb={4}>
         {description}
-      </Text>
+      </SubHeading>
       <Link href={linkHref}>
-        <Text fontWeight="bold" color="blue.500">
+        <SubHeading fontSize="md" color="blue.500">
           {linkText}
-        </Text>
+        </SubHeading>
       </Link>
     </Flex>
   );

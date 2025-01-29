@@ -10,6 +10,18 @@ import {
   currency,
   useAppDispatch,
 } from "@/components";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+import "./styles.css";
+
+// import required modules
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useGetByIdQuery } from "@/store/services/commonApi";
 import { Flex, Grid, Image, Text, Stack, useToast } from "@chakra-ui/react";
 import { addToCart } from "@/store/slices/cartSlice";
@@ -22,6 +34,7 @@ type SingleProductPageProps = {
 const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
   const dispatch = useAppDispatch();
   const toast = useToast();
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const { data, isFetching, isUninitialized, isError } = useGetByIdQuery(
     { path: "products", id: id },
@@ -67,7 +80,9 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
     <Layout isLoading={!data || isFetching || isUninitialized || isError}>
       <Column gap={2} p={{ base: 4, md: 6 }}>
         <TopGrid>
-          <Image src={data?.image} w="full" h="auto" borderRadius={4} />
+          <Column gap={4}>
+            <Image src={data?.image} w="full" h="auto" borderRadius={4} />
+          </Column>
           <Column gap={4}>
             <BasicDetails
               name={data?.name}
