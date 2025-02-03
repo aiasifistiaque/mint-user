@@ -1,8 +1,5 @@
 import React from "react";
 import {
-  Box,
-  Heading,
-  Text,
   FormControl,
   FormLabel,
   Input,
@@ -32,7 +29,9 @@ const ContactForm = () => {
       {/* Form */}
       <Stack spacing={6} maxW={{ base: "full", lg: "600px" }} w="100%">
         <FormControl isRequired>
-          <FormLabel fontSize="md" fontFamily={colors?.primaryFont}>Name</FormLabel>
+          <FormLabel fontSize="md" fontFamily={colors?.primaryFont}>
+            Name
+          </FormLabel>
           <Input
             type="text"
             placeholder="Name"
@@ -43,7 +42,9 @@ const ContactForm = () => {
         </FormControl>
 
         <FormControl isRequired>
-          <FormLabel fontFamily={colors?.primaryFont} fontSize="md">E-mail</FormLabel>
+          <FormLabel fontFamily={colors?.primaryFont} fontSize="md">
+            E-mail
+          </FormLabel>
           <Input
             type="email"
             placeholder="E-mail Address"
@@ -54,7 +55,9 @@ const ContactForm = () => {
         </FormControl>
 
         <FormControl isRequired>
-          <FormLabel fontFamily={colors?.primaryFont} fontSize="md">Your Request</FormLabel>
+          <FormLabel fontFamily={colors?.primaryFont} fontSize="md">
+            Your Request
+          </FormLabel>
           <Textarea
             placeholder="Your Request"
             bg="#efefef"

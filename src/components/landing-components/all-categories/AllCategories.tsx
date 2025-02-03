@@ -9,6 +9,7 @@ import {
 } from "../..";
 import React, { FC } from "react";
 import { CategoryCard, CategoryCardContainer } from ".";
+import Link from "next/link";
 
 type CardItemProps = {
   id: string;
@@ -44,7 +45,9 @@ const AllCategories: FC<AllCategoriesProps> = ({
           <Title type="h4">{title}</Title>
           <SubHeading>{subTitle}</SubHeading>
         </Column>
-        <PrimaryButton px={4}>{btnText}</PrimaryButton>
+        <Link href={`/category`}>
+          <PrimaryButton px={4}>{btnText}</PrimaryButton>
+        </Link>
       </TopContainer>
       <CategoryCardContainer data={items}>
         {renderCategoryCards}
