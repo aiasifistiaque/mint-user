@@ -10,7 +10,11 @@ const FooterText: FC<{ children: string; href: string }> = ({
   const colors = useColors();
   return (
     <Link href={href}>
-      <Text fontSize=".9rem" color={colors.footerFg}>
+      <Text
+        fontSize=".9rem"
+        color={colors.footerFg}
+        fontFamily={colors.secondaryFont || "Poppins"}
+      >
         {children}
       </Text>
     </Link>

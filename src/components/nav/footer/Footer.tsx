@@ -74,7 +74,7 @@ const Footer = () => {
           <FooterIcon key={idx} name={name} href={href} />
         ))}
       </FooterIconContainer>
-      <FooterTag>Copyright © 2024, powered by thinkcrypt.io</FooterTag>
+      <FooterTag>Copyright © 2025, powered by thinkcrypt.io</FooterTag>
     </FooterContainer>
   );
 };
