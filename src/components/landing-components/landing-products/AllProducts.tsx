@@ -1,4 +1,6 @@
 "use client";
+
+import React, { FC } from "react";
 import {
   ColRow,
   FlexChild,
@@ -8,7 +10,7 @@ import {
   swiper,
   Button,
 } from "../../";
-import React, { FC } from "react";
+import { useColors } from "@/components/hooks";
 import { ProductCard, ArrowButton } from "./";
 import { Flex } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -57,6 +59,8 @@ const AllProducts: FC<AllProductCardProps> = ({
     },
   });
 
+  const colors = useColors();
+
   const href =
     type == "category" ? `/category/${id}` : `/category/collection/${id}`;
 
@@ -102,7 +106,11 @@ const AllProducts: FC<AllProductCardProps> = ({
         {renderCategoryCards}
       </Flex>
       <Flex as={Link} flex={1} w="full" href={href}>
-        <Button w="full" variant="secondary">
+        <Button
+          w="full"
+          variant="secondary"
+          fontFamily={colors.secondaryFont || "Poppins"}
+        >
           View More
         </Button>
       </Flex>
