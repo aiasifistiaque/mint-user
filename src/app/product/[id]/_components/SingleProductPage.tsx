@@ -9,6 +9,7 @@ import {
   AllProducts,
   currency,
   useAppDispatch,
+  useColors,
 } from "@/components";
 
 import { useGetByIdQuery } from "@/store/services/commonApi";
@@ -24,15 +25,14 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
   const dispatch = useAppDispatch();
   const toast = useToast();
 
+  const { secondaryFont, primaryFont } = useColors();
+
   const { data, isFetching, isUninitialized, isError } = useGetByIdQuery(
     { path: "products", id: id },
     { skip: !id }
   );
 
-  console.log(data, "Data Products");
-
   const [qty, setQty] = useState(1);
-  console.log(data?.description, "Description data");
 
   const handleAdd = () => setQty(qty + 1);
 
@@ -75,26 +75,21 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
         <TopGrid>
           <Column gap={4}>
             {images.length > 1 && (
-              <Align gap={2} mt={2} overflowX="auto">
+              <Align gap={1} mt={2} overflowX="auto">
                 {images.map((img: any, index: number) => (
                   <Box
                     key={index}
-                    border={
-                      selectedImage === img
-                        ? "1px solid #a19f9f"
-                        : "1px solid #a19f9f"
-                    }
+                    border={selectedImage === img ? "1px solid" : "1px solid"}
                     borderColor={
-                      selectedImage === img ? "blue.500" : "gray.300"
+                      selectedImage === img ? "#e9e95bge" : "gray.300"
                     }
                     borderRadius="md"
                     cursor="pointer"
                     onClick={() => setSelectedImage(img)}
-                    p={2}
                   >
                     <Image
                       src={img}
-                      boxSize={{ base: "80px", md: "100px", lg: "150px" }}
+                      boxSize={{ base: "50px", lg: "80px" }}
                       borderRadius="md"
                     />
                   </Box>
@@ -117,7 +112,9 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
             />
             <Column gap={4}>
               <Stack spacing={1}>
-                <Text fontWeight="600">Select Quantity</Text>
+                <Text fontWeight="600" fontFamily={secondaryFont}>
+                  Select Quantity
+                </Text>
                 <Align gap={6}>
                   <QtySelect
                     handleAdd={handleAdd}
@@ -125,18 +122,26 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
                   >
                     {qty}
                   </QtySelect>
-                  <Text fontWeight="600">
+                  <Text fontWeight="600" fontFamily={secondaryFont}>
                     Subtotal: {currency?.symbol}{" "}
                     {(qty * data?.price).toLocaleString()}
                   </Text>
                 </Align>
               </Stack>
               {data?.stock > 0 ? (
-                <Button size="lg" onClick={handleAddToCart}>
+                <Button
+                  size="lg"
+                  fontFamily={secondaryFont || "Poppins"}
+                  onClick={handleAddToCart}
+                >
                   Add To Cart
                 </Button>
               ) : (
-                <Button size="lg" isDisabled>
+                <Button
+                  size="lg"
+                  isDisabled
+                  fontFamily={secondaryFont || "Poppins"}
+                >
                   Out Of Stock
                 </Button>
               )}

@@ -24,6 +24,7 @@ const Hero: FC<HeroProps> = ({
 	subTitleColor,
 }) => {
 	const { content } = useContent();
+	
 	return (
 		<Container
 			borderRadius={content?.hero?.padding == 'apply' ? '2xl' : 'none'}
