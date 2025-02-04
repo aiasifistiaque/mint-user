@@ -2,7 +2,7 @@
 
 import React, { FC, ReactNode } from "react";
 import { Column, Layout, Title, SubHeading, SpaceBetween } from "@/components";
-import { Box, Center, Grid, Select, Spinner } from "@chakra-ui/react";
+import { Box, Center, Flex, Grid, Select, Spinner } from "@chakra-ui/react";
 import { useGetAllQuery, useGetByIdQuery } from "@/store/services/commonApi";
 import { ProductCard } from "@/components/landing-components/landing-products";
 
@@ -31,34 +31,36 @@ const SingleCategoryPage: FC<SingleCategoryPageProps> = ({ id }) => {
     },
     { skip: !id }
   );
-
+  console.log(catData, "Categorgy Data");
   return (
     <Layout p={{ base: 4, md: 6 }} isLoading={catFetching}>
       <Column gap={2} p={4}>
         <SpaceBetween>
           <Column>
-            <Title type="h3">{catData?.name}</Title>
-            <SubHeading>
-              {catData?.description ||
-                `Explore products from category ${catData?.name}`}
+            <Flex justifyContent="space-between" alignItems="center">
+              <Title type="h3">{catData?.name}</Title>
+              <Box>
+                <Select
+                  value={sort}
+                  placeholder="Sort by"
+                  onChange={(e) => {
+                    setSort(e.target.value);
+                  }}
+                >
+                  <option value="-price">Price (High-Low)</option>
+                  <option value="price">Price (Low-High)</option>
+                  <option value="name">Name (A-Z)</option>
+                  <option value="-name">Price (Z-A)</option>
+                  <option value="-createdAt">Newest</option>
+                </Select>
+              </Box>
+            </Flex>
+            <SubHeading w={"90%"}>
+              {catData?.shortDescription
+                ? catData?.shortDescription
+                : `Explore products from category ${catData?.name}`}
             </SubHeading>
           </Column>
-
-          <Box>
-            <Select
-              value={sort}
-              placeholder="Sort by"
-              onChange={(e) => {
-                setSort(e.target.value);
-              }}
-            >
-              <option value="-price">Price (High-Low)</option>
-              <option value="price">Price (Low-High)</option>
-              <option value="name">Name (A-Z)</option>
-              <option value="-name">Price (Z-A)</option>
-              <option value="-createdAt">Newest</option>
-            </Select>
-          </Box>
         </SpaceBetween>
       </Column>
 

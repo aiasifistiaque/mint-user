@@ -9,7 +9,7 @@ import {
   useGetItemNameById,
   PLACEHOLDER_IMAGE_2,
 } from "../../..";
-import { Image } from "@chakra-ui/react";
+import { Image, Skeleton } from "@chakra-ui/react";
 import { useGetAllQuery } from "@/store/services/commonApi";
 import Link from "next/link";
 
@@ -17,7 +17,7 @@ const IMAGE_SIZE = { base: "100%", md: "100%", lg: "100%" };
 
 const CategoryCard: FC<{ id: string; type: string }> = ({ id, type }) => {
   const { name, image } = useGetItemNameById({ id, path: type });
-  const { data } = useGetAllQuery({
+  const { data, isLoading } = useGetAllQuery({
     path: "products",
     filters: {
       ...(type === "categories" && { category_in: id }),
@@ -36,13 +36,25 @@ const CategoryCard: FC<{ id: string; type: string }> = ({ id, type }) => {
           alt="name"
           objectFit="cover"
           width={IMAGE_SIZE}
+          // minH={"250px"}
+          // maxH={"250px"}
           height={sizes.CATEGORY_CARD_HEIGHT}
           borderRadius={sizes.RADIUS}
         />
-        <Column>
+        <Column minH={"100px"}>
           <Title type="h6">{name}</Title>
           <SubHeading fontSize="1.1rem">
-            {data?.totalDocs || "--"} products
+            {isLoading ? (
+              <Skeleton
+                display="inline-block"
+                alignItems="center"
+                width="30px"
+                height="20px"
+              />
+            ) : (
+              data?.totalDocs ?? 0
+            )}{" "}
+            products
           </SubHeading>
         </Column>
       </Column>

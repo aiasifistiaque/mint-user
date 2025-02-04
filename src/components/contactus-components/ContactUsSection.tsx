@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Heading,
-  Text,
-  Grid,
-  GridItem,
-  Link,
-  Flex,
-} from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import { contactCardData } from "./contactData";
 import ContactCard from "./ContactCard";
 import { SubHeading, Title } from "../text";
