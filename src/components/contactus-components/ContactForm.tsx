@@ -14,7 +14,7 @@ import { useColors } from "../hooks";
 const ContactForm = () => {
   const colors = useColors();
   return (
-    <Column alignItems="center" mt={{ base: 10 }} py={10}>
+    <Column alignItems="center" mt={{ base: 10 }} p={{ base: 6, lg: 16 }}>
       {/* Title Section */}
       <Title fontSize={{ base: "24px", lg: "40px" }} mb={2}>
         We’d Love to Help

@@ -21,7 +21,7 @@ const ContactPage: FC<ContactPageProps> = ({}) => {
   //     </Center>
   //   );
   return (
-    <Layout>
+    <Layout >
       <ContactUsSection />
       <ContactForm />
     </Layout>

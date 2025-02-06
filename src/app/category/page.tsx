@@ -8,6 +8,7 @@ import {
   Title,
   SubHeading,
   SpaceBetween,
+  LoadMoreButton,
 } from "@/components";
 import { useGetAllQuery, useGetByIdQuery } from "@/store/services/commonApi";
 import { useParams } from "next/navigation";
@@ -19,24 +20,32 @@ import Link from "next/link";
 
 const CategoryPage = () => {
   const [sort, setSort] = React.useState("priority");
+  const [page, setPage] = React.useState(1);
 
-  const { data, isFetching, isUninitialized, isError } = useGetAllQuery({
+  const { data, isLoading, isFetching, isUninitialized, isError } = useGetAllQuery({
     path: "categories",
     sort,
-    limit: 999,
+    limit: 16 * page,
     filters: {
       isActive: true,
     },
   });
 
-  const { data: colData } = useGetAllQuery({
+  const { data: colData, isLoading: colIsLoading } = useGetAllQuery({
     path: "collections",
     sort,
-    limit: 999,
+    limit: 16 * page,
+
     filters: {
       isActive: true,
     },
   });
+
+  const loadMore = () => setPage(page + 1);
+  const showLoadMoreButton = () => {
+    if (!data) return false;
+    return data?.totalDocs > data?.doc?.length;
+  };
 
   return (
     <Layout isLoading={isFetching || !data}>
@@ -78,6 +87,11 @@ const CategoryPage = () => {
           </>
         )}
       </Grid>
+      <LoadMoreButton
+        show={showLoadMoreButton()}
+        onClick={loadMore}
+        isLoading={isFetching}
+      />
     </Layout>
   );
 };

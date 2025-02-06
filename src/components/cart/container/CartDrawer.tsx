@@ -84,6 +84,7 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
                       color: brand,
                     }}
                     borderRadius="lg"
+                    isDisabled={!cartItems?.length}
                     w="full"
                   >
                     Checkout
@@ -107,7 +108,15 @@ const CartDrawer = ({ children }: { children: ReactNode }) => {
               )}
               {!isLoggedIn && (
                 <Link href="/checkout">
-                  <Text textAlign="center" fontWeight={500}>Checkout as Guest</Text>
+                  <Button
+                    isDisabled={!cartItems?.length}
+                    textAlign="center"
+                    fontWeight={500}
+                    w="full"
+                    variant="outline"
+                  >
+                    Checkout as Guest
+                  </Button>
                 </Link>
               )}
             </Column>

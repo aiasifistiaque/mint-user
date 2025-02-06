@@ -18,7 +18,7 @@ type ItemProps = {
   title: string;
   subTitle: string;
   href: string;
-  type: "collections" | "product" | "category";
+  type: "collection" | "product" | "category";
 };
 
 const DiscoverItem: FC<ItemProps> = ({
@@ -33,8 +33,8 @@ const DiscoverItem: FC<ItemProps> = ({
 
   const resolvedHref = isExternal
     ? href
-    : type === "collections"
-    ? `/category/${href}`
+    : type === "collection"
+    ? `/category/collection/${href}`
     : type === "product"
     ? `/product/${href}`
     : type === "category"

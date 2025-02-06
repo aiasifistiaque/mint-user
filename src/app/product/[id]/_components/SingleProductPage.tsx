@@ -34,7 +34,22 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
 
   const [qty, setQty] = useState(1);
 
-  const handleAdd = () => setQty(qty + 1);
+  console.log(data?.stock, "Stocks Available");
+
+  const handleAdd = () => {
+    if (qty >= data?.stock) {
+      toast({
+        title: "Stock limit reached",
+        description: `Only ${data?.stock} items available in stock.`,
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        variant: "subtle",
+      });
+      return;
+    }
+    setQty(qty + 1);
+  };
 
   const handleRemoveOne = () => {
     if (qty === 1) return;
@@ -75,7 +90,7 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
         <TopGrid>
           <Column gap={4}>
             {images.length > 1 && (
-              <Align gap={1} mt={2} overflowX="auto">
+              <Align gap={2} overflowX="auto">
                 {images.map((img: any, index: number) => (
                   <Box
                     key={index}
@@ -127,6 +142,11 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ id }) => {
                     {(qty * data?.price).toLocaleString()}
                   </Text>
                 </Align>
+                {qty >= data?.stock && (
+                  <Text color="red.500" fontSize="sm" fontWeight="600">
+                    Stock Exceeded.
+                  </Text>
+                )}
               </Stack>
               {data?.stock > 0 ? (
                 <Button
