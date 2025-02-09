@@ -32,7 +32,7 @@ const CategoryCard: FC<{ id: string; type: string }> = ({ id, type }) => {
     <Link href={href}>
       <Column pb={4} pt={4} userSelect="none" w="full" gap={4}>
         <Image
-          src={image}
+          src={image || PLACEHOLDER_IMAGE_2}
           alt="name"
           objectFit="cover"
           width={IMAGE_SIZE}
