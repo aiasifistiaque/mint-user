@@ -1,11 +1,15 @@
-import { Column, SubHeading, Title, Button, sizes } from "../..";
-import { Grid, Image, Box } from "@chakra-ui/react";
 import React, { FC } from "react";
+import { Column, SubHeading, Title, Button, sizes } from "../..";
+import { Grid, Image, Box, Link } from "@chakra-ui/react";
+
+import NextLink from "next/link";
 
 type AboutProps = {
   image: string;
   title: string;
   subTitle: string;
+  href: string;
+  type: "collection" | "product" | "category";
 };
 
 // const aboutData = {
@@ -16,8 +20,19 @@ type AboutProps = {
 // 		'https://images.pexels.com/photos/179909/pexels-photo-179909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 // };
 
-const About: FC<AboutProps> = ({ image, title, subTitle }) => {
+const About: FC<AboutProps> = ({ image, title, subTitle, href, type }) => {
   // const { image, title, subTitle } = aboutData;
+  const isExternal = href?.startsWith("http");
+  const resolvedHref = isExternal
+    ? href
+    : type === "collection"
+    ? `/category/collection/${href}`
+    : type === "product"
+    ? `/product/${href}`
+    : type === "category"
+    ? `/category/${href}`
+    : href;
+
   return (
     <Grid
       py={16}
@@ -44,9 +59,17 @@ const About: FC<AboutProps> = ({ image, title, subTitle }) => {
         <Title type="h3">{title}</Title>
         <SubHeading fontSize="1.1rem">{subTitle}</SubHeading>
         <Box>
-          <Button variant="primary" href="/category">
-            Shop Now
-          </Button>
+          {isExternal ? (
+            <Link href={resolvedHref} isExternal>
+              <Button as="a" variant="primary">
+                Shop Now
+              </Button>
+            </Link>
+          ) : (
+            <NextLink href={resolvedHref} passHref>
+              <Button variant="primary">Shop Now</Button>
+            </NextLink>
+          )}
         </Box>
       </Column>
     </Grid>

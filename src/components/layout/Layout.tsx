@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import { Header, Body, Footer, Banner } from "..";
 import { ColorMode, useColors } from "@/components";
 import { useScroll } from "framer-motion";
+import { useGetStoreQuery } from "@/store/services/storeApi";
 
 type LayoutProps = FlexProps & {
   children: React.ReactNode;
@@ -11,6 +12,14 @@ type LayoutProps = FlexProps & {
 
 const Layout: FC<LayoutProps> = ({ children, isLoading, ...props }) => {
   const { secondaryFont, bg } = useColors();
+  const { data, isLoading: isStoreLoading } = useGetStoreQuery({});
+
+  if (isStoreLoading)
+    return (
+      <Center flex={1} h="100vh">
+        <Spinner size="xl" />
+      </Center>
+    );
 
   return (
     <>

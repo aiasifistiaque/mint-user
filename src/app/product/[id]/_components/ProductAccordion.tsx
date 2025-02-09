@@ -20,7 +20,11 @@ const ProductAccordion = ({ description }: { description: string }) => {
             <AccordionIcon />
           </AccordionButton>
         </h2>
-        <AccordionPanel pb={4} color={colors?.secondaryText}>
+        <AccordionPanel
+          pb={4}
+          color={colors?.secondaryText}
+          fontFamily={colors.secondaryFont || "Poppins"}
+        >
           {description}
         </AccordionPanel>
       </AccordionItem>
@@ -59,17 +63,20 @@ const ProductAccordion = ({ description }: { description: string }) => {
   );
 };
 
-const AccordionTitle = ({ children }: { children: ReactNode }) => (
-  <Box
-    fontSize="1.4rem"
-    fontWeight="600"
-    fontFamily="Playfair Display"
-    as="span"
-    flex="1"
-    textAlign="left"
-  >
-    {children}
-  </Box>
-);
+const AccordionTitle = ({ children }: { children: ReactNode }) => {
+  const { primaryFont } = useColors();
+  return (
+    <Box
+      fontSize="1.4rem"
+      fontWeight="600"
+      fontFamily={primaryFont || "Poppins"}
+      as="span"
+      flex="1"
+      textAlign="left"
+    >
+      {children}
+    </Box>
+  );
+};
 
 export default ProductAccordion;

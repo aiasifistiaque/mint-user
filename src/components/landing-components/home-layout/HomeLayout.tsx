@@ -53,7 +53,7 @@ const HomeLayout: FC<HomeLayoutProps> = ({}) => {
         <Spinner size="xl" />
       </Center>
     );
-
+  
   return (
     <Layout>
       <Column gap={8}>

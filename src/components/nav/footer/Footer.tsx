@@ -11,8 +11,8 @@ import { useGetAllStoreQuery } from "@/store/services/storeApi";
 
 const footerItems = [
   {
-    name: "About Us",
-    href: "#",
+    name: "Privacy Policy",
+    href: "/privacy-policy",
   },
   {
     name: "FAQs",

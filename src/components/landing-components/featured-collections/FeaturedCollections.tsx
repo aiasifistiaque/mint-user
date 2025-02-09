@@ -18,11 +18,29 @@ type ItemProps = {
   title: string;
   subTitle: string;
   href: string;
+  type: "collection" | "product" | "category";
 };
 
-const DiscoverItem: FC<ItemProps> = ({ image, title, subTitle, href }) => {
+const DiscoverItem: FC<ItemProps> = ({
+  image,
+  title,
+  subTitle,
+  href,
+  type,
+}) => {
   const colors = useColors();
   const isExternal = href?.startsWith("http");
+
+  const resolvedHref = isExternal
+    ? href
+    : type === "collection"
+    ? `/category/collection/${href}`
+    : type === "product"
+    ? `/product/${href}`
+    : type === "category"
+    ? `/category/${href}`
+    : href;
+
   return (
     <BgImage
       src={image}
@@ -42,7 +60,7 @@ const DiscoverItem: FC<ItemProps> = ({ image, title, subTitle, href }) => {
         <Spacer />
         <Flex justify="flex-end">
           {isExternal ? (
-            <Link href={href} isExternal>
+            <Link href={resolvedHref} isExternal>
               <IconButton
                 as="a"
                 aria-label="Arrow Button"
@@ -64,7 +82,7 @@ const DiscoverItem: FC<ItemProps> = ({ image, title, subTitle, href }) => {
               />
             </Link>
           ) : (
-            <NextLink href={href} passHref>
+            <NextLink href={resolvedHref} passHref>
               <IconButton
                 as="a"
                 aria-label="Arrow Button"
@@ -93,6 +111,7 @@ const DiscoverItem: FC<ItemProps> = ({ image, title, subTitle, href }) => {
 };
 
 const FeaturedCollections: FC<{ items: ItemProps[] }> = ({ items }) => {
+  console.log(items);
   const renderItems = items?.map((item: ItemProps, i: number) => (
     <DiscoverItem {...item} key={i} />
   ));

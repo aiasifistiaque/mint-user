@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   Box,
   Flex,
@@ -6,20 +7,30 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Skeleton,
 } from "@chakra-ui/react";
 import { SubHeading, Title } from "../text";
 
 type FAQSectionProps = {
   content?: any;
   data?: any;
+  isLoading?: any;
 };
 
-const FAQSection = (data: FAQSectionProps) => {
-  const faqPage = data?.data?.content?.faqPage;
-  const faq = data?.data?.content?.faq;
+const FAQSection: FC<FAQSectionProps> = ({ data, isLoading }) => {
+  const faqPage = data?.content?.faqPage;
+  const faq = data?.content?.faq;
+
+  
 
   return (
-    <Flex direction="column" mt={10} alignItems="center" gap={6}>
+    <Flex
+      direction="column"
+      mt={10}
+      alignItems="center"
+      gap={6}
+      p={{ base: 6, lg: 16 }}
+    >
       {/* Leading Texts */}
       <Box textAlign="center">
         <Title fontSize="4xl" mb={4}>
@@ -35,7 +46,7 @@ const FAQSection = (data: FAQSectionProps) => {
       </Box>
 
       {/* Accordion */}
-      <Title fontSize="4xl">General Questions</Title>
+      {/* <Title fontSize="4xl">General Questions</Title>
       <SubHeading
         fontSize="lg"
         color="gray.600"
@@ -43,8 +54,13 @@ const FAQSection = (data: FAQSectionProps) => {
       >
         Find answers to common questions or get in touch with us for more
         information!
-      </SubHeading>
-      <Accordion allowToggle w="100%" maxW={{ base: "full", lg: "1000px" }}>
+      </SubHeading> */}
+      <Accordion
+        mt={6}
+        allowToggle
+        w="100%"
+        maxW={{ base: "full", lg: "1000px" }}
+      >
         {faq?.map((faq: any, id: number) => (
           <AccordionItem key={faq?.id}>
             <AccordionButton _expanded={{ bg: "gray.100", fontWeight: "bold" }}>

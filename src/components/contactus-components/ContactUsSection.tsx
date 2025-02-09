@@ -7,7 +7,7 @@ import { Column } from "../containers";
 
 const ContactUsSection = () => {
   return (
-    <Column textAlign="center" mt={10}>
+    <Column textAlign="center" mt={10} p={{ base: 6, lg: 16 }}>
       {/* Leading Title and Subtitle */}
       <Title fontSize={{ base: "24px", lg: "40px" }}>
         Contact Our Friendly Team

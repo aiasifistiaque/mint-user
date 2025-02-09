@@ -14,12 +14,11 @@ import {
   useAppDispatch,
   FlexChild,
   currency,
-	useColors,
+  useColors,
 } from "../../..";
 import { addToCart } from "@/store/slices/cartSlice";
 import { useRouter } from "next/navigation";
 import { useToast, FlexProps } from "@chakra-ui/react";
-
 
 // const IMAGE_SIZE = { base: '100%', md: '100%', lg: '100%' };
 
@@ -46,6 +45,7 @@ const ProductCard: FC<ProductCardProps> = ({
   const dispatch = useAppDispatch();
   const toast = useToast();
   const router = useRouter();
+  const { secondaryFont } = useColors();
   const handleAddToCart = (e: React.MouseEvent<any>) => {
     e.stopPropagation();
     dispatch(
@@ -75,7 +75,7 @@ const ProductCard: FC<ProductCardProps> = ({
         )}
       </CardImage>
       <Column>
-        <Text fontSize="1.2rem">
+        <Text fontSize="1.2rem" fontFamily={secondaryFont}>
           {currency?.symbol} {price?.toLocaleString()}
         </Text>
         <Title type="h6">{name}</Title>

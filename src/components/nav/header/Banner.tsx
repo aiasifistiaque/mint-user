@@ -45,7 +45,7 @@ const BannerIcon = ({ name, href }: { name: string; href: string }) => {
 };
 
 const Banner = () => {
-  const { bannerFg, bannerBg } = useColors();
+  const { bannerFg, bannerBg, secondaryFont } = useColors();
   const { content } = useContent();
   const { data: shopData } = useGetAllStoreQuery({});
 
@@ -93,6 +93,7 @@ const Banner = () => {
           letterSpacing="2px"
           color={bannerFg}
           fontSize=".8rem"
+          fontFamily={secondaryFont || "Poppins"}
         >
           {content?.banner?.centerText}
         </Text>
@@ -104,6 +105,7 @@ const Banner = () => {
           display={{ base: "none", md: "flex" }}
           letterSpacing="2px"
           color={bannerFg}
+          fontFamily={secondaryFont || "Poppins"}
           fontSize=".8rem"
         >
           {content?.banner?.rightText}

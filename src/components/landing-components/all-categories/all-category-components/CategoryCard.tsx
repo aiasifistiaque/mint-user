@@ -9,7 +9,7 @@ import {
   useGetItemNameById,
   PLACEHOLDER_IMAGE_2,
 } from "../../..";
-import { Image, Skeleton } from "@chakra-ui/react";
+import { Box, Image, Skeleton } from "@chakra-ui/react";
 import { useGetAllQuery } from "@/store/services/commonApi";
 import Link from "next/link";
 
@@ -36,11 +36,12 @@ const CategoryCard: FC<{ id: string; type: string }> = ({ id, type }) => {
           alt="name"
           objectFit="cover"
           width={IMAGE_SIZE}
-          // minH={"250px"}
+          minH={"400px"}
           // maxH={"250px"}
-          height={sizes.CATEGORY_CARD_HEIGHT}
+          h={sizes?.CATEGORY_CARD_HEIGHT}
           borderRadius={sizes.RADIUS}
         />
+
         <Column minH={"100px"}>
           <Title type="h6">{name}</Title>
           <SubHeading fontSize="1.1rem">
